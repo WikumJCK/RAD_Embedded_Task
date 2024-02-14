@@ -58,6 +58,8 @@ DMA_HandleTypeDef hdma_i2c2_tx;
 TIM_HandleTypeDef htim1;
 
 UART_HandleTypeDef huart3;
+DMA_HandleTypeDef hdma_usart3_rx;
+DMA_HandleTypeDef hdma_usart3_tx;
 
 PCD_HandleTypeDef hpcd_USB_OTG_FS;
 
@@ -72,6 +74,20 @@ osThreadId TempReading_TasHandle;
 
 static const uint8_t DS1307_ADDR = 0x68 <<1;
 //static const uint8_t REG_RTC = 0x00;
+
+uint8_t uart_bfr, cmd;
+uint16_t buffer_counter=0;
+uint8_t led_status;
+uint8_t cmdstate=0;
+uint32_t blinktimer;
+uint8_t blinkstatus;
+uint8_t uart_buffer[128];
+static uint8_t UART_SendFlag=1;
+uint8_t menu_cmd[]={"\
+  \r\nToggle GREEN LED     ----> 1 \
+  \r\nToggle BLUE LED      ----> 2 \
+  \r\nToggle RED LED       ----> 3 \
+  \r\nType your option here : \n"};
 
 /* USER CODE END PV */
 
@@ -546,9 +562,15 @@ static void MX_DMA_Init(void)
   __HAL_RCC_DMA1_CLK_ENABLE();
 
   /* DMA interrupt init */
+  /* DMA1_Stream1_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA1_Stream1_IRQn, 5, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Stream1_IRQn);
   /* DMA1_Stream2_IRQn interrupt configuration */
   HAL_NVIC_SetPriority(DMA1_Stream2_IRQn, 5, 0);
   HAL_NVIC_EnableIRQ(DMA1_Stream2_IRQn);
+  /* DMA1_Stream3_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA1_Stream3_IRQn, 5, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Stream3_IRQn);
   /* DMA1_Stream7_IRQn interrupt configuration */
   HAL_NVIC_SetPriority(DMA1_Stream7_IRQn, 5, 0);
   HAL_NVIC_EnableIRQ(DMA1_Stream7_IRQn);
@@ -644,13 +666,60 @@ void Start_RTC(void const * argument)
 * @param argument: Not used
 * @retval None
 */
+void send_uart_dma(uint8_t* ptr, uint16_t len){
+	while(!UART_SendFlag);
+
+	UART_SendFlag=0;
+	HAL_UART_Transmit_DMA(&huart3, (uint8_t*)ptr, len);
+
+}
+
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
+
+	if((uart_bfr!=0x0D)&&(uart_bfr!=0x0A)){
+		cmd=uart_bfr;
+	}
+	if(uart_bfr==0x0D){
+		cmdstate=1;
+	}
+
+	HAL_UART_Receive_DMA(&huart3,&uart_bfr, 1);
+
+}
+
+void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart){
+	UART_SendFlag=1;
+}
 /* USER CODE END Header_Start_UART_LED */
 void Start_UART_LED(void const * argument)
 {
   /* USER CODE BEGIN Start_UART_LED */
+
+	send_uart_dma(menu_cmd, strlen((char*)menu_cmd));
+	HAL_UART_Receive_DMA(&huart3,&uart_bfr, 1);
   /* Infinite loop */
   for(;;)
   {
+	  if(cmdstate){
+	      	cmdstate=0;
+
+	      	//process command
+	      	switch (cmd){
+	      	case '1':
+	      		HAL_GPIO_TogglePin (GPIOB, LD1_Pin);
+	      		break;
+	      	case '2':
+	      		HAL_GPIO_TogglePin (GPIOB, LD2_Pin);
+	      		break;
+	      	case '3':
+	      		HAL_GPIO_TogglePin (GPIOB, LD3_Pin);
+	      		break;
+	      	}
+
+	      	send_uart_dma(menu_cmd, strlen((char*)menu_cmd));
+
+	      	}
+
     osDelay(1);
   }
   /* USER CODE END Start_UART_LED */
