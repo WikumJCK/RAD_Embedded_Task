@@ -19,7 +19,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "string.h"
-
+#include <stdio.h>
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
@@ -51,6 +51,10 @@ ETH_DMADescTypeDef  DMATxDscrTab[ETH_TX_DESC_CNT]; /* Ethernet Tx DMA Descriptor
 
 ETH_HandleTypeDef heth;
 
+I2C_HandleTypeDef hi2c2;
+DMA_HandleTypeDef hdma_i2c2_rx;
+DMA_HandleTypeDef hdma_i2c2_tx;
+
 TIM_HandleTypeDef htim1;
 
 UART_HandleTypeDef huart3;
@@ -63,60 +67,29 @@ float temperature;
 char string[64];
 uint8_t Presence = 0;
 uint8_t Temp_byte1,Temp_byte2;
+
+
+static const uint8_t DS1307_ADDR = 0x68 <<1;
+//static const uint8_t REG_RTC = 0x00;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
+static void MX_DMA_Init(void);
 static void MX_ETH_Init(void);
 static void MX_USART3_UART_Init(void);
 static void MX_USB_OTG_FS_PCD_Init(void);
 static void MX_TIM1_Init(void);
+static void MX_I2C2_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
-/* USER CODE END 0 */
-
-/**
-  * @brief  The application entry point.
-  * @retval int
-  */
-int main(void)
-{
-  /* USER CODE BEGIN 1 */
-
-  /* USER CODE END 1 */
-
-  /* MCU Configuration--------------------------------------------------------*/
-
-  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-  HAL_Init();
-
-  /* USER CODE BEGIN Init */
-
-  /* USER CODE END Init */
-
-  /* Configure the system clock */
-  SystemClock_Config();
-
-  /* USER CODE BEGIN SysInit */
-
-  /* USER CODE END SysInit */
-
-  /* Initialize all configured peripherals */
-  MX_GPIO_Init();
-  MX_ETH_Init();
-  MX_USART3_UART_Init();
-  MX_USB_OTG_FS_PCD_Init();
-  MX_TIM1_Init();
-  /* USER CODE BEGIN 2 */
-  HAL_TIM_Base_Start(&htim1);
-
-  void Set_Pin_Output(GPIO_TypeDef *GPIOx,uint16_t GPIO_Pin){
+void Set_Pin_Output(GPIO_TypeDef *GPIOx,uint16_t GPIO_Pin){
 		  GPIO_InitTypeDef GPIO_InitStruct = {0};
 		  GPIO_InitStruct.Pin = GPIO_Pin;
 		  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
@@ -217,6 +190,102 @@ int main(void)
   	}
   	return value;
   }
+
+ // Convert normal decimal numbers to binary coded decimal
+ uint8_t decToBcd(int val)
+ {
+   return (uint8_t)( (val/10*16) + (val%10) );
+ }
+
+ // Convert binary coded decimal to normal decimal numbers
+ int bcdToDec(uint8_t val)
+ {
+   return (int)( (val/16*10) + (val%16) );
+ }
+
+ typedef struct {
+	 uint8_t seconds;
+	 uint8_t minutes;
+	 uint8_t hour;
+	 uint8_t dayofweek;
+	 uint8_t dayofmonth;
+	 uint8_t month;
+	 uint8_t year;
+ } TIME;
+
+ TIME time;
+
+ /* function to set time */
+ void Set_Time (uint8_t sec, uint8_t min, uint8_t hour, uint8_t dow, uint8_t dom, uint8_t month, uint8_t year)
+ {
+ 	uint8_t set_time[7];
+ 	set_time[0] = decToBcd(sec);
+ 	set_time[1] = decToBcd(min);
+ 	set_time[2] = decToBcd(hour);
+ 	set_time[3] = decToBcd(dow);
+ 	set_time[4] = decToBcd(dom);
+ 	set_time[5] = decToBcd(month);
+ 	set_time[6] = decToBcd(year);
+
+ 	HAL_I2C_Mem_Write(&hi2c2, DS1307_ADDR, 0x00, 1, set_time, 7, 1000);
+// 	HAL_I2C_Mem_Write_DMA(&hi2c2, DS1307_ADDR, 0x00, 1, set_time, 7);
+ }
+
+ void Get_Time (void)
+ {
+ 	uint8_t get_time[7];
+ 	HAL_I2C_Mem_Read(&hi2c2, DS1307_ADDR, 0x00, 1, get_time, 7, 1000);
+// 	HAL_I2C_Mem_Read_DMA(&hi2c2, DS1307_ADDR, 0x00, 1, get_time, 7);
+ 	time.seconds = bcdToDec(get_time[0]);
+ 	time.minutes = bcdToDec(get_time[1]);
+ 	time.hour = bcdToDec(get_time[2]);
+ 	time.dayofweek = bcdToDec(get_time[3]);
+ 	time.dayofmonth = bcdToDec(get_time[4]);
+ 	time.month = bcdToDec(get_time[5]);
+ 	time.year = bcdToDec(get_time[6]);
+ }
+
+ char buffer[10];
+/* USER CODE END 0 */
+
+/**
+  * @brief  The application entry point.
+  * @retval int
+  */
+int main(void)
+{
+  /* USER CODE BEGIN 1 */
+
+  /* USER CODE END 1 */
+
+  /* MCU Configuration--------------------------------------------------------*/
+
+  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
+  HAL_Init();
+
+  /* USER CODE BEGIN Init */
+
+  /* USER CODE END Init */
+
+  /* Configure the system clock */
+  SystemClock_Config();
+
+  /* USER CODE BEGIN SysInit */
+
+  /* USER CODE END SysInit */
+
+  /* Initialize all configured peripherals */
+  MX_GPIO_Init();
+  MX_DMA_Init();
+  MX_ETH_Init();
+  MX_USART3_UART_Init();
+  MX_USB_OTG_FS_PCD_Init();
+  MX_TIM1_Init();
+  MX_I2C2_Init();
+  /* USER CODE BEGIN 2 */
+  HAL_TIM_Base_Start(&htim1);
+
+  Set_Time(00, 03, 14, 5, 3, 1, 19);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -226,6 +295,10 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+
+	  Get_Time();
+	  sprintf(buffer, "%02d:%02d:%02d",time.hour,time.minutes,time.seconds);
+
 	  Presence = DS18B20_Start();
 	  HAL_Delay (1);
 	  DS18B20_Write (0xCC);  // skip ROM
@@ -337,6 +410,54 @@ static void MX_ETH_Init(void)
   /* USER CODE BEGIN ETH_Init 2 */
 
   /* USER CODE END ETH_Init 2 */
+
+}
+
+/**
+  * @brief I2C2 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_I2C2_Init(void)
+{
+
+  /* USER CODE BEGIN I2C2_Init 0 */
+
+  /* USER CODE END I2C2_Init 0 */
+
+  /* USER CODE BEGIN I2C2_Init 1 */
+
+  /* USER CODE END I2C2_Init 1 */
+  hi2c2.Instance = I2C2;
+  hi2c2.Init.ClockSpeed = 100000;
+  hi2c2.Init.DutyCycle = I2C_DUTYCYCLE_2;
+  hi2c2.Init.OwnAddress1 = 0;
+  hi2c2.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
+  hi2c2.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
+  hi2c2.Init.OwnAddress2 = 0;
+  hi2c2.Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
+  hi2c2.Init.NoStretchMode = I2C_NOSTRETCH_DISABLE;
+  if (HAL_I2C_Init(&hi2c2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+  /** Configure Analogue filter
+  */
+  if (HAL_I2CEx_ConfigAnalogFilter(&hi2c2, I2C_ANALOGFILTER_ENABLE) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+  /** Configure Digital filter
+  */
+  if (HAL_I2CEx_ConfigDigitalFilter(&hi2c2, 0) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN I2C2_Init 2 */
+
+  /* USER CODE END I2C2_Init 2 */
 
 }
 
@@ -455,6 +576,25 @@ static void MX_USB_OTG_FS_PCD_Init(void)
 }
 
 /**
+  * Enable DMA controller clock
+  */
+static void MX_DMA_Init(void)
+{
+
+  /* DMA controller clock enable */
+  __HAL_RCC_DMA1_CLK_ENABLE();
+
+  /* DMA interrupt init */
+  /* DMA1_Stream2_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA1_Stream2_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Stream2_IRQn);
+  /* DMA1_Stream7_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA1_Stream7_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Stream7_IRQn);
+
+}
+
+/**
   * @brief GPIO Initialization Function
   * @param None
   * @retval None
@@ -465,6 +605,7 @@ static void MX_GPIO_Init(void)
 
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOC_CLK_ENABLE();
+  __HAL_RCC_GPIOF_CLK_ENABLE();
   __HAL_RCC_GPIOH_CLK_ENABLE();
   __HAL_RCC_GPIOA_CLK_ENABLE();
   __HAL_RCC_GPIOB_CLK_ENABLE();
