@@ -45,7 +45,7 @@
 
 /* Private variables ---------------------------------------------------------*/
 
-ETH_TxPacketConfig  TxConfig;
+ETH_TxPacketConfig TxConfig;
 ETH_DMADescTypeDef  DMARxDscrTab[ETH_RX_DESC_CNT]; /* Ethernet Rx DMA Descriptors */
 ETH_DMADescTypeDef  DMATxDscrTab[ETH_TX_DESC_CNT]; /* Ethernet Tx DMA Descriptors */
 
@@ -791,8 +791,6 @@ void Start_DataLogging(void const * argument)
 void Start_FanControl(void const * argument)
 {
   /* USER CODE BEGIN Start_FanControl */
-	TIM1->CCR1 = 50;
-	HAL_TIM_PWM_Start(&htim1,TIM_CHANNEL_1);
   /* Infinite loop */
   for(;;)
   {
