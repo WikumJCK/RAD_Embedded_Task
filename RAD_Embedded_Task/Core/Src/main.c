@@ -24,8 +24,13 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "OneWire.h"
-#include "ds18b20.h"
+#include "stm32fxxx_hal.h"
+/* Include my libraries here */
+#include "defines.h"
+#include "tm_stm32_disco.h"
+#include "tm_stm32_delay.h"
+#include "tm_stm32_ds18b20.h"
+#include "tm_stm32_onewire.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -134,7 +139,14 @@ void delay(uint32_t us)
       while ((__HAL_TIM_GET_COUNTER(&htim1))<us);
   }
 
+/* Onewire structure */
+TM_OneWire_t OW;
 
+/* Array for DS18B20 ROM number */
+uint8_t DS_ROM[8];
+
+/* Temperature variable */
+float temp;
 
 
 /* USER CODE END 0 */
@@ -146,7 +158,7 @@ void delay(uint32_t us)
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-
+//	TM_RCC_InitSystem();
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -306,6 +318,7 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
+  HAL_RCC_MCOConfig(RCC_MCO2, RCC_MCO2SOURCE_SYSCLK, RCC_MCODIV_1);
 }
 
 /**
@@ -649,7 +662,7 @@ static void MX_DMA_Init(void)
   HAL_NVIC_SetPriority(DMA1_Stream3_IRQn, 5, 0);
   HAL_NVIC_EnableIRQ(DMA1_Stream3_IRQn);
   /* DMA1_Stream4_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(DMA1_Stream4_IRQn, 0, 0);
+  HAL_NVIC_SetPriority(DMA1_Stream4_IRQn, 5, 0);
   HAL_NVIC_EnableIRQ(DMA1_Stream4_IRQn);
   /* DMA1_Stream7_IRQn interrupt configuration */
   HAL_NVIC_SetPriority(DMA1_Stream7_IRQn, 5, 0);
@@ -658,10 +671,10 @@ static void MX_DMA_Init(void)
   HAL_NVIC_SetPriority(DMA2_Stream1_IRQn, 5, 0);
   HAL_NVIC_EnableIRQ(DMA2_Stream1_IRQn);
   /* DMA2_Stream2_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(DMA2_Stream2_IRQn, 0, 0);
+  HAL_NVIC_SetPriority(DMA2_Stream2_IRQn, 5, 0);
   HAL_NVIC_EnableIRQ(DMA2_Stream2_IRQn);
   /* DMA2_Stream5_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(DMA2_Stream5_IRQn, 0, 0);
+  HAL_NVIC_SetPriority(DMA2_Stream5_IRQn, 5, 0);
   HAL_NVIC_EnableIRQ(DMA2_Stream5_IRQn);
 
 }
@@ -690,9 +703,6 @@ static void MX_GPIO_Init(void)
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(USB_PowerSwitchOn_GPIO_Port, USB_PowerSwitchOn_Pin, GPIO_PIN_RESET);
-
-  /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(Temp_SensorD5_GPIO_Port, Temp_SensorD5_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin : USER_Btn_Pin */
   GPIO_InitStruct.Pin = USER_Btn_Pin;
@@ -726,11 +736,18 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(USB_OverCurrent_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : Temp_SensorD5_Pin */
-  GPIO_InitStruct.Pin = Temp_SensorD5_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  /*Configure GPIO pin : PC9 */
+  GPIO_InitStruct.Pin = GPIO_PIN_9;
+  GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  GPIO_InitStruct.Alternate = GPIO_AF0_MCO;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : Temp_SensorD5_Pin */
+  GPIO_InitStruct.Pin = Temp_SensorD5_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(Temp_SensorD5_GPIO_Port, &GPIO_InitStruct);
 
 }
@@ -993,11 +1010,51 @@ void Start_Temp(void const * argument)
 {
   /* USER CODE BEGIN Start_Temp */
   /* Infinite loop */
-	Ds18b20_Init(osPriorityNormal);
+
+	TM_OneWire_Init(&OW, Temp_Sensor_GPIO_Port, Temp_Sensor_Pin);
+
+	if (TM_OneWire_First(&OW)) {
+		/* Set LED GREEN */
+		HAL_GPIO_TogglePin (GPIOB, LD1_Pin);
+
+		/* Read ROM number */
+		TM_OneWire_GetFullROM(&OW, DS_ROM);
+	} else {
+		/* Set LED RED */
+		HAL_GPIO_TogglePin (GPIOB, LD2_Pin);
+	}
+
+	if (TM_DS18B20_Is(DS_ROM)) {
+	        /* Set resolution */
+	        TM_DS18B20_SetResolution(&OW, DS_ROM, TM_DS18B20_Resolution_12bits);
+
+	        /* Set high and low alarms */
+	        TM_DS18B20_SetAlarmHighTemperature(&OW, DS_ROM, 30);
+	        TM_DS18B20_SetAlarmLowTemperature(&OW, DS_ROM, 10);
+
+	        /* Start conversion on all sensors */
+	        TM_DS18B20_StartAll(&OW);
+	    }
   for(;;)
   {
+	  if (TM_DS18B20_Is(DS_ROM)) {
+	              /* Everything is done */
+	              if (TM_DS18B20_AllDone(&OW)) {
+	                  /* Read temperature from device */
+	                  if (TM_DS18B20_Read(&OW, DS_ROM, &temp)) {
+	                      /* Temp read OK, CRC is OK */
 
-    osDelay(1);
+	                      /* Start again on all sensors */
+	                      TM_DS18B20_StartAll(&OW);
+
+	                      /* Check temperature */
+	                  } else {
+	                      /* CRC failed, hardware problems on data line */
+	                  }
+	              }
+	          }
+
+    osDelay(100);
   }
   /* USER CODE END Start_Temp */
 }
