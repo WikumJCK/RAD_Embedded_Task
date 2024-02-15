@@ -1,37 +1,40 @@
-04:39:05 **** Incremental Build of configuration Debug for project RAD_Embedded_Task ****
+05:42:41 **** Incremental Build of configuration Debug for project RAD_Embedded_Task ****
 make -j12 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
 ../Core/Src/main.c: In function 'Start_RTC':
-../Core/Src/main.c:657:4: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
-  657 |    sprintf(buffer, "%02d:%02d:%02d",time.hour,time.minutes,time.seconds);
+../Core/Src/main.c:658:4: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  658 |    sprintf(buffer, "%02d:%02d:%02d",time.hour,time.minutes,time.seconds);
       |    ^~~~~~~
-../Core/Src/main.c:657:4: warning: incompatible implicit declaration of built-in function 'sprintf'
+../Core/Src/main.c:658:4: warning: incompatible implicit declaration of built-in function 'sprintf'
 ../Core/Src/main.c:23:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
    22 | #include "cmsis_os.h"
   +++ |+#include <stdio.h>
    23 | 
+../Core/Src/main.c:660:4: warning: implicit declaration of function 'send_uart_dma' [-Wimplicit-function-declaration]
+  660 |    send_uart_dma(buffer, strlen((char*)buffer));
+      |    ^~~~~~~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:672:6: warning: conflicting types for 'send_uart_dma'
+  672 | void send_uart_dma(uint8_t* ptr, uint16_t len){
+      |      ^~~~~~~~~~~~~
+../Core/Src/main.c:660:4: note: previous implicit declaration of 'send_uart_dma' was here
+  660 |    send_uart_dma(buffer, strlen((char*)buffer));
+      |    ^~~~~~~~~~~~~
 arm-none-eabi-gcc -o "RAD_Embedded_Task.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="RAD_Embedded_Task.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: RAD_Embedded_Task.elf
  
 arm-none-eabi-size   RAD_Embedded_Task.elf 
 arm-none-eabi-objdump -h -S  RAD_Embedded_Task.elf  > "RAD_Embedded_Task.list"
    text	   data	    bss	    dec	    hex	filename
-  36176	    260	  20556	  56992	   dea0	RAD_Embedded_Task.elf
+  35200	    260	  20556	  56016	   dad0	RAD_Embedded_Task.elf
 Finished building: default.size.stdout
  
 Finished building: RAD_Embedded_Task.list
  
-04:39:26 **** Incremental Build of configuration Debug for project RAD_Embedded_Task ****
+05:42:47 **** Incremental Build of configuration Debug for project RAD_Embedded_Task ****
 make -j12 all 
 arm-none-eabi-size   RAD_Embedded_Task.elf 
    text	   data	    bss	    dec	    hex	filename
-  36176	    260	  20556	  56992	   dea0	RAD_Embedded_Task.elf
-Finished building: default.size.stdout
- 
-04:41:35 **** Incremental Build of configuration Debug for project RAD_Embedded_Task ****
-make -j12 all 
-arm-none-eabi-size   RAD_Embedded_Task.elf 
-   text	   data	    bss	    dec	    hex	filename
-  36176	    260	  20556	  56992	   dea0	RAD_Embedded_Task.elf
+  35200	    260	  20556	  56016	   dad0	RAD_Embedded_Task.elf
 Finished building: default.size.stdout
  

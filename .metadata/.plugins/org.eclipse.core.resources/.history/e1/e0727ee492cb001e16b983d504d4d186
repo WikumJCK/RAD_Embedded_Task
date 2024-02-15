@@ -185,7 +185,7 @@ int main(void)
 
   /* Create the thread(s) */
   /* definition and creation of RTC_Task */
-  osThreadDef(RTC_Task, Start_RTC, osPriorityAboveNormal, 0, 256);
+  osThreadDef(RTC_Task, Start_RTC, osPriorityNormal, 0, 128);
   RTC_TaskHandle = osThreadCreate(osThread(RTC_Task), NULL);
 
   /* definition and creation of UART_LEDTask */
@@ -514,9 +514,9 @@ static void MX_DMA_Init(void)
   /* DMA1_Stream2_IRQn interrupt configuration */
   HAL_NVIC_SetPriority(DMA1_Stream2_IRQn, 5, 0);
   HAL_NVIC_EnableIRQ(DMA1_Stream2_IRQn);
-  /* DMA1_Stream4_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(DMA1_Stream4_IRQn, 0, 0);
-  HAL_NVIC_EnableIRQ(DMA1_Stream4_IRQn);
+  /* DMA1_Stream3_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA1_Stream3_IRQn, 5, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Stream3_IRQn);
   /* DMA1_Stream7_IRQn interrupt configuration */
   HAL_NVIC_SetPriority(DMA1_Stream7_IRQn, 5, 0);
   HAL_NVIC_EnableIRQ(DMA1_Stream7_IRQn);
@@ -634,8 +634,8 @@ static void MX_GPIO_Init(void)
  void Get_Time (void)
  {
  	uint8_t get_time[7];
-// 	HAL_I2C_Mem_Read(&hi2c2, DS1307_ADDR, 0x00, 1, get_time, 7, 1000);
- 	HAL_I2C_Mem_Read_DMA(&hi2c2, DS1307_ADDR, 0x00, 1, get_time, 7);
+ 	HAL_I2C_Mem_Read(&hi2c2, DS1307_ADDR, 0x00, 1, get_time, 7, 1000);
+// 	HAL_I2C_Mem_Read_DMA(&hi2c2, DS1307_ADDR, 0x00, 1, get_time, 7);
  	time.seconds = bcdToDec(get_time[0]);
  	time.minutes = bcdToDec(get_time[1]);
  	time.hour = bcdToDec(get_time[2]);
@@ -650,14 +650,14 @@ static void MX_GPIO_Init(void)
 void Start_RTC(void const * argument)
 {
   /* USER CODE BEGIN 5 */
-//	Set_Time(00, 03, 14, 4, 15, 2, 24);
+	Set_Time(00, 03, 14, 4, 15, 2, 24);
   /* Infinite loop */
   for(;;)
   {
 	  Get_Time();
 	  sprintf(buffer, "%02d:%02d:%02d",time.hour,time.minutes,time.seconds);
 //	  sprintf ((char*)uart_buffer,"LED Status %d\r",led_status);
-	  send_uart_dma(buffer, strlen((char*)buffer));
+	 // send_uart_dma(buffer, strlen((char*)buffer));
 	  osDelay(1000);
   }
   /* USER CODE END 5 */
@@ -669,59 +669,59 @@ void Start_RTC(void const * argument)
 * @param argument: Not used
 * @retval None
 */
-void send_uart_dma(uint8_t* ptr, uint16_t len){
-	while(!UART_SendFlag);
-
-	UART_SendFlag=0;
-	HAL_UART_Transmit_DMA(&huart3, (uint8_t*)ptr, len);
-
-}
-
-void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
-
-	if((uart_bfr!=0x0D)&&(uart_bfr!=0x0A)){
-		cmd=uart_bfr;
-	}
-	if(uart_bfr==0x0D){
-		cmdstate=1;
-	}
-
-	HAL_UART_Receive_DMA(&huart3,&uart_bfr, 1);
-
-}
-
-void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart){
-	UART_SendFlag=1;
-}
+//void send_uart_dma(uint8_t* ptr, uint16_t len){
+//	while(!UART_SendFlag);
+//
+//	UART_SendFlag=0;
+//	HAL_UART_Transmit_DMA(&huart3, (uint8_t*)ptr, len);
+//
+//}
+//
+//void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
+//
+//	if((uart_bfr!=0x0D)&&(uart_bfr!=0x0A)){
+//		cmd=uart_bfr;
+//	}
+//	if(uart_bfr==0x0D){
+//		cmdstate=1;
+//	}
+//
+//	HAL_UART_Receive_DMA(&huart3,&uart_bfr, 1);
+//
+//}
+//
+//void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart){
+//	UART_SendFlag=1;
+//}
 /* USER CODE END Header_Start_UART_LED */
 void Start_UART_LED(void const * argument)
 {
   /* USER CODE BEGIN Start_UART_LED */
 
-	send_uart_dma(menu_cmd, strlen((char*)menu_cmd));
-	HAL_UART_Receive_DMA(&huart3,&uart_bfr, 1);
+//	send_uart_dma(menu_cmd, strlen((char*)menu_cmd));
+//	HAL_UART_Receive_DMA(&huart3,&uart_bfr, 1);
   /* Infinite loop */
   for(;;)
   {
-	  if(cmdstate){
-	      	cmdstate=0;
-
-	      	//process command
-	      	switch (cmd){
-	      	case '1':
-	      		HAL_GPIO_TogglePin (GPIOB, LD1_Pin);
-	      		break;
-	      	case '2':
-	      		HAL_GPIO_TogglePin (GPIOB, LD2_Pin);
-	      		break;
-	      	case '3':
-	      		HAL_GPIO_TogglePin (GPIOB, LD3_Pin);
-	      		break;
-	      	}
-
-	      	send_uart_dma(menu_cmd, strlen((char*)menu_cmd));
-
-	      	}
+//	  if(cmdstate){
+//	      	cmdstate=0;
+//
+//	      	//process command
+//	      	switch (cmd){
+//	      	case '1':
+//	      		HAL_GPIO_TogglePin (GPIOB, LD1_Pin);
+//	      		break;
+//	      	case '2':
+//	      		HAL_GPIO_TogglePin (GPIOB, LD2_Pin);
+//	      		break;
+//	      	case '3':
+//	      		HAL_GPIO_TogglePin (GPIOB, LD3_Pin);
+//	      		break;
+//	      	}
+//
+//	      	send_uart_dma(menu_cmd, strlen((char*)menu_cmd));
+//
+//	      	}
 
     osDelay(1);
   }
