@@ -6,3 +6,5 @@
 1707930554843	Delete resource 'RAD_Embedded_Task/Core/Inc/onewire.h'
 1707981982991	Delete resource 'RAD_Embedded_Task/Core/Inc/user_diskio.h'
 1707982000941	Delete resource 'RAD_Embedded_Task/Core/Src/user_diskio.c'
+1708015560658	Delete resource 'RAD_Embedded_Task/Core/Src/gpio.c'
+1708015888092	Delete resource 'RAD_Embedded_Task/Core/Src/tim.c'

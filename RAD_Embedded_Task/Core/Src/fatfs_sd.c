@@ -41,7 +41,8 @@ static void DESELECT(void)
 static void SPI_TxByte(BYTE data)
 {
   while (HAL_SPI_GetState(&hspi1) != HAL_SPI_STATE_READY);
-  HAL_SPI_Transmit_DMA(&hspi1, &data, 1);
+  HAL_SPI_Transmit(&hspi1, &data, 1,1000);
+//  HAL_SPI_Transmit_DMA(&hspi1, &data, 1);
 }
 
 /* SPI 데이터 송수신 리턴형 함수 */
@@ -52,8 +53,8 @@ static uint8_t SPI_RxByte(void)
   data = 0;
 
   while ((HAL_SPI_GetState(&hspi1) != HAL_SPI_STATE_READY));
-  HAL_SPI_TransmitReceive_DMA(&hspi1, &dummy, &data, 1);
-
+  HAL_SPI_TransmitReceive(&hspi1, &dummy, &data, 1,1000);
+//  HAL_SPI_TransmitReceive_DMA(&hspi1, &dummy, &data, 1);
   return data;
 }
 

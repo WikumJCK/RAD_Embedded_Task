@@ -21,12 +21,11 @@
 #include "string.h"
 #include "cmsis_os.h"
 #include "fatfs.h"
-#include "fatfs_sd.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
-
+#include "OneWire.h"
+#include "ds18b20.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -62,6 +61,7 @@ DMA_HandleTypeDef hdma_spi1_rx;
 DMA_HandleTypeDef hdma_spi1_tx;
 
 TIM_HandleTypeDef htim1;
+TIM_HandleTypeDef htim3;
 DMA_HandleTypeDef hdma_tim1_ch1;
 
 UART_HandleTypeDef huart3;
@@ -75,6 +75,7 @@ osThreadId UART_LEDTaskHandle;
 osThreadId DataLogging_TasHandle;
 osThreadId FanControl_TaskHandle;
 osThreadId TempReading_TasHandle;
+osMessageQId myQueue01Handle;
 /* USER CODE BEGIN PV */
 
 
@@ -111,6 +112,7 @@ static void MX_USB_OTG_FS_PCD_Init(void);
 static void MX_TIM1_Init(void);
 static void MX_I2C2_Init(void);
 static void MX_SPI1_Init(void);
+static void MX_TIM3_Init(void);
 void Start_RTC(void const * argument);
 void Start_UART_LED(void const * argument);
 void Start_DataLogging(void const * argument);
@@ -173,6 +175,7 @@ int main(void)
   MX_I2C2_Init();
   MX_SPI1_Init();
   MX_FATFS_Init();
+  MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
   HAL_TIM_Base_Start(&htim1);
 
@@ -191,6 +194,11 @@ int main(void)
   /* USER CODE BEGIN RTOS_TIMERS */
   /* start timers, add new ones, ... */
   /* USER CODE END RTOS_TIMERS */
+
+  /* Create the queue(s) */
+  /* definition and creation of myQueue01 */
+  osMessageQDef(myQueue01, 16, uint16_t);
+  myQueue01Handle = osMessageCreate(osMessageQ(myQueue01), NULL);
 
   /* USER CODE BEGIN RTOS_QUEUES */
   /* add queues, ... */
@@ -511,6 +519,51 @@ static void MX_TIM1_Init(void)
 }
 
 /**
+  * @brief TIM3 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_TIM3_Init(void)
+{
+
+  /* USER CODE BEGIN TIM3_Init 0 */
+
+  /* USER CODE END TIM3_Init 0 */
+
+  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
+  TIM_MasterConfigTypeDef sMasterConfig = {0};
+
+  /* USER CODE BEGIN TIM3_Init 1 */
+
+  /* USER CODE END TIM3_Init 1 */
+  htim3.Instance = TIM3;
+  htim3.Init.Prescaler = 72-1;
+  htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim3.Init.Period = 65535;
+  htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim3.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  if (HAL_TIM_Base_Init(&htim3) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
+  if (HAL_TIM_ConfigClockSource(&htim3, &sClockSourceConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim3, &sMasterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN TIM3_Init 2 */
+
+  /* USER CODE END TIM3_Init 2 */
+
+}
+
+/**
   * @brief USART3 Initialization Function
   * @param None
   * @retval None
@@ -601,15 +654,15 @@ static void MX_DMA_Init(void)
   /* DMA1_Stream7_IRQn interrupt configuration */
   HAL_NVIC_SetPriority(DMA1_Stream7_IRQn, 5, 0);
   HAL_NVIC_EnableIRQ(DMA1_Stream7_IRQn);
-  /* DMA2_Stream0_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(DMA2_Stream0_IRQn, 5, 0);
-  HAL_NVIC_EnableIRQ(DMA2_Stream0_IRQn);
   /* DMA2_Stream1_IRQn interrupt configuration */
   HAL_NVIC_SetPriority(DMA2_Stream1_IRQn, 5, 0);
   HAL_NVIC_EnableIRQ(DMA2_Stream1_IRQn);
-  /* DMA2_Stream3_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(DMA2_Stream3_IRQn, 5, 0);
-  HAL_NVIC_EnableIRQ(DMA2_Stream3_IRQn);
+  /* DMA2_Stream2_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA2_Stream2_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA2_Stream2_IRQn);
+  /* DMA2_Stream5_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA2_Stream5_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA2_Stream5_IRQn);
 
 }
 
@@ -637,6 +690,9 @@ static void MX_GPIO_Init(void)
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(USB_PowerSwitchOn_GPIO_Port, USB_PowerSwitchOn_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(Temp_SensorD5_GPIO_Port, Temp_SensorD5_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin : USER_Btn_Pin */
   GPIO_InitStruct.Pin = USER_Btn_Pin;
@@ -669,6 +725,13 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(USB_OverCurrent_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : Temp_SensorD5_Pin */
+  GPIO_InitStruct.Pin = Temp_SensorD5_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(Temp_SensorD5_GPIO_Port, &GPIO_InitStruct);
 
 }
 
@@ -736,7 +799,7 @@ static void MX_GPIO_Init(void)
  	time.year = bcdToDec(get_time[6]);
  }
 
- char buffer[10];
+char time_buffer[10];
 /* USER CODE END Header_Start_RTC */
 void Start_RTC(void const * argument)
 {
@@ -746,17 +809,13 @@ void Start_RTC(void const * argument)
   for(;;)
   {
 	  Get_Time();
-	  sprintf(buffer, "%02d:%02d:%02d",time.hour,time.minutes,time.seconds);
+	  sprintf(time_buffer, "%02d:%02d:%02d",time.hour,time.minutes,time.seconds);
 //	  sprintf ((char*)uart_buffer,"LED Status %d\r",led_status);
-	  send_uart_dma(buffer, strlen((char*)buffer));
+	  send_uart_dma(time_buffer, strlen((char*)time_buffer));
 	  osDelay(1000);
   }
   /* USER CODE END 5 */
 }
-
-
-
-
 
 /* USER CODE BEGIN Header_Start_UART_LED */
 /**
@@ -823,9 +882,6 @@ void Start_UART_LED(void const * argument)
   /* USER CODE END Start_UART_LED */
 }
 
-
-
-
 /* USER CODE BEGIN Header_Start_DataLogging */
 /**
 * @brief Function implementing the DataLogging_Tas thread.
@@ -867,12 +923,32 @@ void Start_DataLogging(void const * argument)
 //	if(fresult != FR_OK) send_uart("error in mounting SD CARD...\n");
 //	else send_uart("SD Card mounted successfully...\n");
 	fresult = f_open(&fil,"file1.txt",FA_OPEN_ALWAYS|FA_READ|FA_WRITE);
-	fresult = f_puts("This data is from file\n\n",&fil);
+	strcpy(SD_buffer,"This data is from file\n\n");
+	fresult = f_write(&fil,SD_buffer,bufsize(SD_buffer),&bw);
 	fresult = f_close(&fil);
+	bufclear();
+	unsigned long ptr = 0;
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
+	fresult = f_open(&fil,"file2.txt",FA_OPEN_ALWAYS|FA_WRITE);
+	fresult = f_lseek(&fil, ptr);
+	fresult = f_puts(time_buffer,&fil);
+	ptr+=bufsize(time_buffer);
+	fresult = f_puts(",\n",&fil);
+	ptr+=2;
+//	fresult = f_write(&fil,time_buffer,bufsize(time_buffer),&bw);
+	fresult = f_close(&fil);
+	bufclear();
+
+
+//	fresult = f_lseek(&fil,fil.fptr);
+//	fresult = f_puts(time_buffer,&fil);
+//	fresult = f_puts(",",&fil);
+//	//fresult = f_puts(fan_speed,&fil);
+//	fresult = f_puts("\n\n",&fil);
+////	fresult = f_close(&fil);
+    osDelay(1000);
   }
   /* USER CODE END Start_DataLogging */
 }
@@ -883,17 +959,21 @@ void Start_DataLogging(void const * argument)
 * @param argument: Not used
 * @retval None
 */
+
+char fan_speed[20];
 /* USER CODE END Header_Start_FanControl */
 void Start_FanControl(void const * argument)
 {
   /* USER CODE BEGIN Start_FanControl */
+	uint8_t sp = 45;
 	TIM1->CCR1 = 50;
 	HAL_TIM_PWM_Start(&htim1,TIM_CHANNEL_1);
   /* Infinite loop */
   for(;;)
   {
-	for(int i =0;i<100;i++){
+	for(uint8_t i =0;i<100;i++){
 		TIM1->CCR1 = i;
+		sprintf(fan_speed,"Fan Speed : %02d",sp);
 		osDelay(10);
 	}
     osDelay(1);
@@ -907,13 +987,16 @@ void Start_FanControl(void const * argument)
 * @param argument: Not used
 * @retval None
 */
+
 /* USER CODE END Header_Start_Temp */
 void Start_Temp(void const * argument)
 {
   /* USER CODE BEGIN Start_Temp */
   /* Infinite loop */
+	Ds18b20_Init(osPriorityNormal);
   for(;;)
   {
+
     osDelay(1);
   }
   /* USER CODE END Start_Temp */

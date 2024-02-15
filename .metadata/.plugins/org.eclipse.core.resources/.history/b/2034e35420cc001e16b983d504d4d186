@@ -1,0 +1,246 @@
+/* USER CODE BEGIN Header */
+/**
+  ******************************************************************************
+  * File Name          : freertos.c
+  * Description        : Code for freertos applications
+  ******************************************************************************
+  * @attention
+  *
+  * Copyright (c) 2024 STMicroelectronics.
+  * All rights reserved.
+  *
+  * This software is licensed under terms that can be found in the LICENSE file
+  * in the root directory of this software component.
+  * If no LICENSE file comes with this software, it is provided AS-IS.
+  *
+  ******************************************************************************
+  */
+/* USER CODE END Header */
+
+/* Includes ------------------------------------------------------------------*/
+#include "FreeRTOS.h"
+#include "task.h"
+#include "main.h"
+#include "cmsis_os.h"
+
+/* Private includes ----------------------------------------------------------*/
+/* USER CODE BEGIN Includes */
+
+/* USER CODE END Includes */
+
+/* Private typedef -----------------------------------------------------------*/
+/* USER CODE BEGIN PTD */
+
+/* USER CODE END PTD */
+
+/* Private define ------------------------------------------------------------*/
+/* USER CODE BEGIN PD */
+
+/* USER CODE END PD */
+
+/* Private macro -------------------------------------------------------------*/
+/* USER CODE BEGIN PM */
+
+/* USER CODE END PM */
+
+/* Private variables ---------------------------------------------------------*/
+/* USER CODE BEGIN Variables */
+
+/* USER CODE END Variables */
+osThreadId RTC_TaskHandle;
+osThreadId UART_LEDTaskHandle;
+osThreadId DataLogging_TasHandle;
+osThreadId FanControl_TaskHandle;
+osThreadId TempReading_TasHandle;
+osMessageQId myQueue01Handle;
+
+/* Private function prototypes -----------------------------------------------*/
+/* USER CODE BEGIN FunctionPrototypes */
+
+/* USER CODE END FunctionPrototypes */
+
+void Start_RTC(void const * argument);
+void Start_UART_LED(void const * argument);
+void Start_DataLogging(void const * argument);
+void Start_FanControl(void const * argument);
+void Start_Temp(void const * argument);
+
+void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
+
+/* GetIdleTaskMemory prototype (linked to static allocation support) */
+void vApplicationGetIdleTaskMemory( StaticTask_t **ppxIdleTaskTCBBuffer, StackType_t **ppxIdleTaskStackBuffer, uint32_t *pulIdleTaskStackSize );
+
+/* USER CODE BEGIN GET_IDLE_TASK_MEMORY */
+static StaticTask_t xIdleTaskTCBBuffer;
+static StackType_t xIdleStack[configMINIMAL_STACK_SIZE];
+
+void vApplicationGetIdleTaskMemory( StaticTask_t **ppxIdleTaskTCBBuffer, StackType_t **ppxIdleTaskStackBuffer, uint32_t *pulIdleTaskStackSize )
+{
+  *ppxIdleTaskTCBBuffer = &xIdleTaskTCBBuffer;
+  *ppxIdleTaskStackBuffer = &xIdleStack[0];
+  *pulIdleTaskStackSize = configMINIMAL_STACK_SIZE;
+  /* place for user code */
+}
+/* USER CODE END GET_IDLE_TASK_MEMORY */
+
+/**
+  * @brief  FreeRTOS initialization
+  * @param  None
+  * @retval None
+  */
+void MX_FREERTOS_Init(void) {
+  /* USER CODE BEGIN Init */
+
+  /* USER CODE END Init */
+
+  /* USER CODE BEGIN RTOS_MUTEX */
+  /* add mutexes, ... */
+  /* USER CODE END RTOS_MUTEX */
+
+  /* USER CODE BEGIN RTOS_SEMAPHORES */
+  /* add semaphores, ... */
+  /* USER CODE END RTOS_SEMAPHORES */
+
+  /* USER CODE BEGIN RTOS_TIMERS */
+  /* start timers, add new ones, ... */
+  /* USER CODE END RTOS_TIMERS */
+
+  /* Create the queue(s) */
+  /* definition and creation of myQueue01 */
+  osMessageQDef(myQueue01, 16, uint16_t);
+  myQueue01Handle = osMessageCreate(osMessageQ(myQueue01), NULL);
+
+  /* USER CODE BEGIN RTOS_QUEUES */
+  /* add queues, ... */
+  /* USER CODE END RTOS_QUEUES */
+
+  /* Create the thread(s) */
+  /* definition and creation of RTC_Task */
+  osThreadDef(RTC_Task, Start_RTC, osPriorityAboveNormal, 0, 256);
+  RTC_TaskHandle = osThreadCreate(osThread(RTC_Task), NULL);
+
+  /* definition and creation of UART_LEDTask */
+  osThreadDef(UART_LEDTask, Start_UART_LED, osPriorityNormal, 0, 256);
+  UART_LEDTaskHandle = osThreadCreate(osThread(UART_LEDTask), NULL);
+
+  /* definition and creation of DataLogging_Tas */
+  osThreadDef(DataLogging_Tas, Start_DataLogging, osPriorityNormal, 0, 256);
+  DataLogging_TasHandle = osThreadCreate(osThread(DataLogging_Tas), NULL);
+
+  /* definition and creation of FanControl_Task */
+  osThreadDef(FanControl_Task, Start_FanControl, osPriorityBelowNormal, 0, 128);
+  FanControl_TaskHandle = osThreadCreate(osThread(FanControl_Task), NULL);
+
+  /* definition and creation of TempReading_Tas */
+  osThreadDef(TempReading_Tas, Start_Temp, osPriorityAboveNormal, 0, 128);
+  TempReading_TasHandle = osThreadCreate(osThread(TempReading_Tas), NULL);
+
+  /* USER CODE BEGIN RTOS_THREADS */
+  /* add threads, ... */
+  /* USER CODE END RTOS_THREADS */
+
+}
+
+/* USER CODE BEGIN Header_Start_RTC */
+/**
+  * @brief  Function implementing the RTC_Task thread.
+  * @param  argument: Not used
+  * @retval None
+  */
+/* USER CODE END Header_Start_RTC */
+void Start_RTC(void const * argument)
+{
+  /* USER CODE BEGIN Start_RTC */
+  /* Infinite loop */
+  for(;;)
+  {
+    osDelay(1);
+  }
+  /* USER CODE END Start_RTC */
+}
+
+/* USER CODE BEGIN Header_Start_UART_LED */
+/**
+* @brief Function implementing the UART_LEDTask thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_Start_UART_LED */
+void Start_UART_LED(void const * argument)
+{
+  /* USER CODE BEGIN Start_UART_LED */
+  /* Infinite loop */
+  for(;;)
+  {
+    osDelay(1);
+  }
+  /* USER CODE END Start_UART_LED */
+}
+
+/* USER CODE BEGIN Header_Start_DataLogging */
+/**
+* @brief Function implementing the DataLogging_Tas thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_Start_DataLogging */
+void Start_DataLogging(void const * argument)
+{
+  /* USER CODE BEGIN Start_DataLogging */
+  /* Infinite loop */
+  for(;;)
+  {
+    osDelay(1);
+  }
+  /* USER CODE END Start_DataLogging */
+}
+
+/* USER CODE BEGIN Header_Start_FanControl */
+/**
+* @brief Function implementing the FanControl_Task thread.
+* @param argument: Not used
+* @retval None
+*/
+char fan_speed[20];
+/* USER CODE END Header_Start_FanControl */
+void Start_FanControl(void const * argument)
+{
+  /* USER CODE BEGIN Start_FanControl */
+	uint8_t sp = 45;
+	TIM1->CCR1 = 50;
+	HAL_TIM_PWM_Start(&htim1,TIM_CHANNEL_1);
+  /* Infinite loop */
+  for(;;)
+  {
+	for(uint8_t i =0;i<100;i++){
+		TIM1->CCR1 = i;
+		sprintf(fan_speed,"Fan Speed : %02d",sp);
+		osDelay(10);
+	}
+    osDelay(1);
+  }
+  /* USER CODE END Start_FanControl */
+}
+
+/* USER CODE BEGIN Header_Start_Temp */
+/**
+* @brief Function implementing the TempReading_Tas thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_Start_Temp */
+void Start_Temp(void const * argument)
+{
+  /* USER CODE BEGIN Start_Temp */
+  /* Infinite loop */
+  for(;;)
+  {
+    osDelay(1);
+  }
+  /* USER CODE END Start_Temp */
+}
+
+/* Private application code --------------------------------------------------*/
+/* USER CODE BEGIN Application */
+
+/* USER CODE END Application */
