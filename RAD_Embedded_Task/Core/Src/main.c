@@ -20,6 +20,8 @@
 #include "main.h"
 #include "string.h"
 #include "cmsis_os.h"
+#include "fatfs.h"
+#include "fatfs_sd.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -45,7 +47,7 @@
 
 /* Private variables ---------------------------------------------------------*/
 
-ETH_TxPacketConfig  TxConfig;
+ETH_TxPacketConfig TxConfig;
 ETH_DMADescTypeDef  DMARxDscrTab[ETH_RX_DESC_CNT]; /* Ethernet Rx DMA Descriptors */
 ETH_DMADescTypeDef  DMATxDscrTab[ETH_TX_DESC_CNT]; /* Ethernet Tx DMA Descriptors */
 
@@ -54,6 +56,10 @@ ETH_HandleTypeDef heth;
 I2C_HandleTypeDef hi2c2;
 DMA_HandleTypeDef hdma_i2c2_rx;
 DMA_HandleTypeDef hdma_i2c2_tx;
+
+SPI_HandleTypeDef hspi1;
+DMA_HandleTypeDef hdma_spi1_rx;
+DMA_HandleTypeDef hdma_spi1_tx;
 
 TIM_HandleTypeDef htim1;
 DMA_HandleTypeDef hdma_tim1_ch1;
@@ -90,6 +96,9 @@ uint8_t menu_cmd[]={"\
   \r\nToggle RED LED       ----> 3 \
   \r\nType your option here : \n"};
 
+
+
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -101,6 +110,7 @@ static void MX_USART3_UART_Init(void);
 static void MX_USB_OTG_FS_PCD_Init(void);
 static void MX_TIM1_Init(void);
 static void MX_I2C2_Init(void);
+static void MX_SPI1_Init(void);
 void Start_RTC(void const * argument);
 void Start_UART_LED(void const * argument);
 void Start_DataLogging(void const * argument);
@@ -161,6 +171,8 @@ int main(void)
   MX_USB_OTG_FS_PCD_Init();
   MX_TIM1_Init();
   MX_I2C2_Init();
+  MX_SPI1_Init();
+  MX_FATFS_Init();
   /* USER CODE BEGIN 2 */
   HAL_TIM_Base_Start(&htim1);
 
@@ -386,6 +398,44 @@ static void MX_I2C2_Init(void)
 }
 
 /**
+  * @brief SPI1 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_SPI1_Init(void)
+{
+
+  /* USER CODE BEGIN SPI1_Init 0 */
+
+  /* USER CODE END SPI1_Init 0 */
+
+  /* USER CODE BEGIN SPI1_Init 1 */
+
+  /* USER CODE END SPI1_Init 1 */
+  /* SPI1 parameter configuration*/
+  hspi1.Instance = SPI1;
+  hspi1.Init.Mode = SPI_MODE_MASTER;
+  hspi1.Init.Direction = SPI_DIRECTION_2LINES;
+  hspi1.Init.DataSize = SPI_DATASIZE_8BIT;
+  hspi1.Init.CLKPolarity = SPI_POLARITY_LOW;
+  hspi1.Init.CLKPhase = SPI_PHASE_1EDGE;
+  hspi1.Init.NSS = SPI_NSS_HARD_OUTPUT;
+  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_32;
+  hspi1.Init.FirstBit = SPI_FIRSTBIT_MSB;
+  hspi1.Init.TIMode = SPI_TIMODE_DISABLE;
+  hspi1.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
+  hspi1.Init.CRCPolynomial = 10;
+  if (HAL_SPI_Init(&hspi1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN SPI1_Init 2 */
+
+  /* USER CODE END SPI1_Init 2 */
+
+}
+
+/**
   * @brief TIM1 Initialization Function
   * @param None
   * @retval None
@@ -551,9 +601,15 @@ static void MX_DMA_Init(void)
   /* DMA1_Stream7_IRQn interrupt configuration */
   HAL_NVIC_SetPriority(DMA1_Stream7_IRQn, 5, 0);
   HAL_NVIC_EnableIRQ(DMA1_Stream7_IRQn);
+  /* DMA2_Stream0_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA2_Stream0_IRQn, 5, 0);
+  HAL_NVIC_EnableIRQ(DMA2_Stream0_IRQn);
   /* DMA2_Stream1_IRQn interrupt configuration */
   HAL_NVIC_SetPriority(DMA2_Stream1_IRQn, 5, 0);
   HAL_NVIC_EnableIRQ(DMA2_Stream1_IRQn);
+  /* DMA2_Stream3_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA2_Stream3_IRQn, 5, 0);
+  HAL_NVIC_EnableIRQ(DMA2_Stream3_IRQn);
 
 }
 
@@ -698,6 +754,10 @@ void Start_RTC(void const * argument)
   /* USER CODE END 5 */
 }
 
+
+
+
+
 /* USER CODE BEGIN Header_Start_UART_LED */
 /**
 * @brief Function implementing the UART_LEDTask thread.
@@ -763,16 +823,52 @@ void Start_UART_LED(void const * argument)
   /* USER CODE END Start_UART_LED */
 }
 
+
+
+
 /* USER CODE BEGIN Header_Start_DataLogging */
 /**
 * @brief Function implementing the DataLogging_Tas thread.
 * @param argument: Not used
 * @retval None
 */
+//SD Card
+FATFS fs;
+FIL fil;
+FRESULT fresult; //to store result
+char SD_buffer[1024]; //to store data
+
+UINT br, bw; //file read/write count
+FATFS *pfs; //For checking the capacity
+DWORD fre_clust;
+uint32_t total, free_space;
+
+void send_uart (char *string){
+	uint8_t len = strlen(string);
+	HAL_UART_Transmit(&huart3,(uint8_t *)string,len,2000);
+}
+
+int bufsize(char *buf){
+	int i=0;
+	while(*buf++ !='\0') i++;
+	return i;
+}
+
+void bufclear(void){
+	for(int i=0;i<1024;i++){
+		SD_buffer[i]= '\0';
+	}
+}
 /* USER CODE END Header_Start_DataLogging */
 void Start_DataLogging(void const * argument)
 {
   /* USER CODE BEGIN Start_DataLogging */
+	fresult = f_mount(&fs,"",0);
+//	if(fresult != FR_OK) send_uart("error in mounting SD CARD...\n");
+//	else send_uart("SD Card mounted successfully...\n");
+	fresult = f_open(&fil,"file1.txt",FA_OPEN_ALWAYS|FA_READ|FA_WRITE);
+	fresult = f_puts("This data is from file\n\n",&fil);
+	fresult = f_close(&fil);
   /* Infinite loop */
   for(;;)
   {
@@ -796,6 +892,10 @@ void Start_FanControl(void const * argument)
   /* Infinite loop */
   for(;;)
   {
+	for(int i =0;i<100;i++){
+		TIM1->CCR1 = i;
+		osDelay(10);
+	}
     osDelay(1);
   }
   /* USER CODE END Start_FanControl */
