@@ -802,7 +802,7 @@ void Start_RTC(void const * argument)
 	  sprintf(time_buffer, "Time: %02d:%02d:%02d",time.hour,time.minutes,time.seconds);
 //	  sprintf ((char*)uart_buffer,"LED Status %d\r",led_status);
 //	  send_uart_dma(time_buffer, strlen((char*)time_buffer));
-	  osDelay(1000);
+	  osDelay(50);
   }
   /* USER CODE END 5 */
 }

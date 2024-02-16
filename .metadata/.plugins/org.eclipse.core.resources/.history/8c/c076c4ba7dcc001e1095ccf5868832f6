@@ -28,13 +28,13 @@
 //#include "tim.h"
 #include "onewire.h"
 #include "ds18b20.h"
-#include <stdio.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
 
 /* USER CODE END PTD */
+
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
 
@@ -789,7 +789,7 @@ static void MX_GPIO_Init(void)
  	time.year = bcdToDec(get_time[6]);
  }
 
-char time_buffer[18];
+char time_buffer[10];
 /* USER CODE END Header_Start_RTC */
 void Start_RTC(void const * argument)
 {
@@ -801,7 +801,7 @@ void Start_RTC(void const * argument)
 	  Get_Time();
 	  sprintf(time_buffer, "Time: %02d:%02d:%02d",time.hour,time.minutes,time.seconds);
 //	  sprintf ((char*)uart_buffer,"LED Status %d\r",led_status);
-//	  send_uart_dma(time_buffer, strlen((char*)time_buffer));
+	  send_uart_dma(time_buffer, strlen((char*)time_buffer));
 	  osDelay(1000);
   }
   /* USER CODE END 5 */
@@ -912,16 +912,16 @@ void Start_DataLogging(void const * argument)
 	fresult = f_mount(&fs,"",0);
 //	if(fresult != FR_OK) send_uart("error in mounting SD CARD...\n");
 //	else send_uart("SD Card mounted successfully...\n");
-//	fresult = f_open(&fil,"file1.txt",FA_OPEN_ALWAYS|FA_READ|FA_WRITE);
-//	strcpy(SD_buffer,"This data is from file\n\n");
-//	fresult = f_write(&fil,SD_buffer,bufsize(SD_buffer),&bw);
-//	fresult = f_close(&fil);
-//	bufclear();
+	fresult = f_open(&fil,"file1.txt",FA_OPEN_ALWAYS|FA_READ|FA_WRITE);
+	strcpy(SD_buffer,"This data is from file\n\n");
+	fresult = f_write(&fil,SD_buffer,bufsize(SD_buffer),&bw);
+	fresult = f_close(&fil);
+	bufclear();
 	unsigned long ptr = 0;
   /* Infinite loop */
   for(;;)
   {
-	fresult = f_open(&fil,"datalog.txt",FA_OPEN_ALWAYS|FA_WRITE);
+	fresult = f_open(&fil,"file2.txt",FA_OPEN_ALWAYS|FA_WRITE);
 	fresult = f_lseek(&fil, ptr);
 	fresult = f_puts(time_buffer,&fil);
 	ptr+=bufsize(time_buffer);
@@ -942,7 +942,7 @@ void Start_DataLogging(void const * argument)
 //	//fresult = f_puts(fan_speed,&fil);
 //	fresult = f_puts("\n\n",&fil);
 ////	fresult = f_close(&fil);
-    osDelay(50);
+    osDelay(1000);
   }
   /* USER CODE END Start_DataLogging */
 }

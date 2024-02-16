@@ -35,6 +35,7 @@
 /* USER CODE BEGIN PTD */
 
 /* USER CODE END PTD */
+
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
 
@@ -942,7 +943,7 @@ void Start_DataLogging(void const * argument)
 //	//fresult = f_puts(fan_speed,&fil);
 //	fresult = f_puts("\n\n",&fil);
 ////	fresult = f_close(&fil);
-    osDelay(50);
+    osDelay(1000);
   }
   /* USER CODE END Start_DataLogging */
 }

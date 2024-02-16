@@ -28,13 +28,13 @@
 //#include "tim.h"
 #include "onewire.h"
 #include "ds18b20.h"
-#include <stdio.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
 
 /* USER CODE END PTD */
+
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
 
@@ -801,7 +801,7 @@ void Start_RTC(void const * argument)
 	  Get_Time();
 	  sprintf(time_buffer, "Time: %02d:%02d:%02d",time.hour,time.minutes,time.seconds);
 //	  sprintf ((char*)uart_buffer,"LED Status %d\r",led_status);
-//	  send_uart_dma(time_buffer, strlen((char*)time_buffer));
+	  send_uart_dma(time_buffer, strlen((char*)time_buffer));
 	  osDelay(1000);
   }
   /* USER CODE END 5 */
@@ -942,7 +942,7 @@ void Start_DataLogging(void const * argument)
 //	//fresult = f_puts(fan_speed,&fil);
 //	fresult = f_puts("\n\n",&fil);
 ////	fresult = f_close(&fil);
-    osDelay(50);
+    osDelay(1000);
   }
   /* USER CODE END Start_DataLogging */
 }

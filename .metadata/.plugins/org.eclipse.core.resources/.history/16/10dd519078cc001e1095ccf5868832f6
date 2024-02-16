@@ -28,15 +28,16 @@
 //#include "tim.h"
 #include "onewire.h"
 #include "ds18b20.h"
-#include <stdio.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
 
 /* USER CODE END PTD */
+
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+
 
 /* USER CODE END PD */
 
@@ -79,12 +80,10 @@ osThreadId TempReading_TasHandle;
 osMessageQId myQueue01Handle;
 /* USER CODE BEGIN PV */
 
-float temperature =0;
 
-char fan_speed[20];
 
 static const uint8_t DS1307_ADDR = 0x68 <<1;
-
+//static const uint8_t REG_RTC = 0x00;
 
 uint8_t uart_bfr, cmd;
 uint16_t buffer_counter=0;
@@ -244,6 +243,24 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 
+
+
+//	  Presence = DS18B20_Start();
+//	  HAL_Delay (1);
+//	  DS18B20_Write (0xCC);  // skip ROM
+//	  DS18B20_Write (0x44);  // convert t
+//	  HAL_Delay (800);
+//
+//	  Presence = DS18B20_Start ();
+//	  HAL_Delay(1);
+//	  DS18B20_Write (0xCC);  // skip ROM
+//	  DS18B20_Write (0xBE);  // Read Scratch-pad
+//
+//	  Temp_byte1 = DS18B20_Read();
+//	  Temp_byte2 = DS18B20_Read();
+//	  TEMP = (Temp_byte2<<8)|Temp_byte1;
+//	  temperature = (float)TEMP/16;
+//	  HAL_Delay(500);
   }
   /* USER CODE END 3 */
 }
@@ -789,7 +806,7 @@ static void MX_GPIO_Init(void)
  	time.year = bcdToDec(get_time[6]);
  }
 
-char time_buffer[18];
+char time_buffer[10];
 /* USER CODE END Header_Start_RTC */
 void Start_RTC(void const * argument)
 {
@@ -799,9 +816,9 @@ void Start_RTC(void const * argument)
   for(;;)
   {
 	  Get_Time();
-	  sprintf(time_buffer, "Time: %02d:%02d:%02d",time.hour,time.minutes,time.seconds);
+	  sprintf(time_buffer, "%02d:%02d:%02d",time.hour,time.minutes,time.seconds);
 //	  sprintf ((char*)uart_buffer,"LED Status %d\r",led_status);
-//	  send_uart_dma(time_buffer, strlen((char*)time_buffer));
+	  send_uart_dma(time_buffer, strlen((char*)time_buffer));
 	  osDelay(1000);
   }
   /* USER CODE END 5 */
@@ -912,24 +929,20 @@ void Start_DataLogging(void const * argument)
 	fresult = f_mount(&fs,"",0);
 //	if(fresult != FR_OK) send_uart("error in mounting SD CARD...\n");
 //	else send_uart("SD Card mounted successfully...\n");
-//	fresult = f_open(&fil,"file1.txt",FA_OPEN_ALWAYS|FA_READ|FA_WRITE);
-//	strcpy(SD_buffer,"This data is from file\n\n");
-//	fresult = f_write(&fil,SD_buffer,bufsize(SD_buffer),&bw);
-//	fresult = f_close(&fil);
-//	bufclear();
+	fresult = f_open(&fil,"file1.txt",FA_OPEN_ALWAYS|FA_READ|FA_WRITE);
+	strcpy(SD_buffer,"This data is from file\n\n");
+	fresult = f_write(&fil,SD_buffer,bufsize(SD_buffer),&bw);
+	fresult = f_close(&fil);
+	bufclear();
 	unsigned long ptr = 0;
   /* Infinite loop */
   for(;;)
   {
-	fresult = f_open(&fil,"datalog.txt",FA_OPEN_ALWAYS|FA_WRITE);
+	fresult = f_open(&fil,"file2.txt",FA_OPEN_ALWAYS|FA_WRITE);
 	fresult = f_lseek(&fil, ptr);
 	fresult = f_puts(time_buffer,&fil);
 	ptr+=bufsize(time_buffer);
-	fresult = f_puts(", ",&fil);
-	ptr+=2;
-	fresult = f_puts(fan_speed,&fil);
-	ptr+=bufsize(fan_speed);
-	fresult = f_puts("\n",&fil);
+	fresult = f_puts(",\n",&fil);
 	ptr+=2;
 //	fresult = f_write(&fil,time_buffer,bufsize(time_buffer),&bw);
 	fresult = f_close(&fil);
@@ -942,7 +955,7 @@ void Start_DataLogging(void const * argument)
 //	//fresult = f_puts(fan_speed,&fil);
 //	fresult = f_puts("\n\n",&fil);
 ////	fresult = f_close(&fil);
-    osDelay(50);
+    osDelay(1000);
   }
   /* USER CODE END Start_DataLogging */
 }
@@ -953,31 +966,24 @@ void Start_DataLogging(void const * argument)
 * @param argument: Not used
 * @retval None
 */
-#define MAXTEMP 35
-#define MINTEMP 29
 
+char fan_speed[20];
 /* USER CODE END Header_Start_FanControl */
 void Start_FanControl(void const * argument)
 {
   /* USER CODE BEGIN Start_FanControl */
-	uint8_t dutyCycle = 50;
-	TIM1->CCR1 = dutyCycle;
+	uint8_t sp = 45;
+	TIM1->CCR1 = 50;
 	HAL_TIM_PWM_Start(&htim1,TIM_CHANNEL_1);
   /* Infinite loop */
   for(;;)
   {
-	if(temperature>MAXTEMP){
-		dutyCycle = 100;
+	for(uint8_t i =0;i<100;i++){
+		TIM1->CCR1 = i;
+		sprintf(fan_speed,"Fan Speed : %02d",sp);
+		osDelay(10);
 	}
-	else if(temperature<MINTEMP){
-		dutyCycle = 0;
-	}
-	else{
-	dutyCycle = ((temperature - MINTEMP)/(MAXTEMP-MINTEMP))*100;
-	}
-	TIM1->CCR1 = dutyCycle;
-	sprintf(fan_speed,"Fan Speed : %02d",dutyCycle);
-    osDelay(20);
+    osDelay(1);
   }
   /* USER CODE END Start_FanControl */
 }
@@ -988,8 +994,7 @@ void Start_FanControl(void const * argument)
 * @param argument: Not used
 * @retval None
 */
-
-
+float temperature;
 char string[64];
 /* USER CODE END Header_Start_Temp */
 void Start_Temp(void const * argument)
@@ -998,21 +1003,22 @@ void Start_Temp(void const * argument)
   /* Infinite loop */
 	DS18B20_Init(DS18B20_Resolution_12bits);
 
+
   for(;;)
   {
-	DS18B20_ReadAll();
-	DS18B20_StartAll();
+	  DS18B20_ReadAll();
+	  DS18B20_StartAll();
 	uint8_t ROM_tmp[8];
 	uint8_t i;
 	  for(i = 0; i < DS18B20_Quantity(); i++)
-		{
-			if(DS18B20_GetTemperature(i, &temperature))
-			{
-				  DS18B20_GetROM(i, ROM_tmp);
-			}
-		}
+	  		{
+	  			if(DS18B20_GetTemperature(i, &temperature))
+	  			{
+	  				DS18B20_GetROM(i, ROM_tmp);
+	  			}
+	  		}
 
-    osDelay(10);
+    osDelay(100);
   }
   /* USER CODE END Start_Temp */
 }
