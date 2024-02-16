@@ -24,13 +24,10 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "stm32fxxx_hal.h"
-/* Include my libraries here */
-#include "defines.h"
-#include "tm_stm32_disco.h"
-#include "tm_stm32_delay.h"
-#include "tm_stm32_ds18b20.h"
-#include "tm_stm32_onewire.h"
+//#include "gpio.h"
+//#include "tim.h"
+#include "onewire.h"
+#include "ds18b20.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -139,14 +136,6 @@ void delay(uint32_t us)
       while ((__HAL_TIM_GET_COUNTER(&htim1))<us);
   }
 
-/* Onewire structure */
-TM_OneWire_t OW;
-
-/* Array for DS18B20 ROM number */
-uint8_t DS_ROM[8];
-
-/* Temperature variable */
-float temp;
 
 
 /* USER CODE END 0 */
@@ -158,7 +147,7 @@ float temp;
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-//	TM_RCC_InitSystem();
+
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -190,6 +179,7 @@ int main(void)
   MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
   HAL_TIM_Base_Start(&htim1);
+
 
   //Setting up the time
 
@@ -234,7 +224,7 @@ int main(void)
   FanControl_TaskHandle = osThreadCreate(osThread(FanControl_Task), NULL);
 
   /* definition and creation of TempReading_Tas */
-  osThreadDef(TempReading_Tas, Start_Temp, osPriorityAboveNormal, 0, 128);
+  osThreadDef(TempReading_Tas, Start_Temp, osPriorityHigh, 0, 128);
   TempReading_TasHandle = osThreadCreate(osThread(TempReading_Tas), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
@@ -318,7 +308,7 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
-  HAL_RCC_MCOConfig(RCC_MCO2, RCC_MCO2SOURCE_SYSCLK, RCC_MCODIV_1);
+  HAL_RCC_MCOConfig(RCC_MCO2, RCC_MCO2SOURCE_SYSCLK, RCC_MCODIV_2);
 }
 
 /**
@@ -550,7 +540,7 @@ static void MX_TIM3_Init(void)
 
   /* USER CODE END TIM3_Init 1 */
   htim3.Instance = TIM3;
-  htim3.Init.Prescaler = 72-1;
+  htim3.Init.Prescaler = 84-1;
   htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
   htim3.Init.Period = 65535;
   htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
@@ -1004,55 +994,29 @@ void Start_FanControl(void const * argument)
 * @param argument: Not used
 * @retval None
 */
-
+float temperature;
+char string[64];
 /* USER CODE END Header_Start_Temp */
 void Start_Temp(void const * argument)
 {
   /* USER CODE BEGIN Start_Temp */
   /* Infinite loop */
+	DS18B20_Init(DS18B20_Resolution_12bits);
 
-	TM_OneWire_Init(&OW, Temp_Sensor_GPIO_Port, Temp_Sensor_Pin);
 
-	if (TM_OneWire_First(&OW)) {
-		/* Set LED GREEN */
-		HAL_GPIO_TogglePin (GPIOB, LD1_Pin);
-
-		/* Read ROM number */
-		TM_OneWire_GetFullROM(&OW, DS_ROM);
-	} else {
-		/* Set LED RED */
-		HAL_GPIO_TogglePin (GPIOB, LD2_Pin);
-	}
-
-	if (TM_DS18B20_Is(DS_ROM)) {
-	        /* Set resolution */
-	        TM_DS18B20_SetResolution(&OW, DS_ROM, TM_DS18B20_Resolution_12bits);
-
-	        /* Set high and low alarms */
-	        TM_DS18B20_SetAlarmHighTemperature(&OW, DS_ROM, 30);
-	        TM_DS18B20_SetAlarmLowTemperature(&OW, DS_ROM, 10);
-
-	        /* Start conversion on all sensors */
-	        TM_DS18B20_StartAll(&OW);
-	    }
   for(;;)
   {
-	  if (TM_DS18B20_Is(DS_ROM)) {
-	              /* Everything is done */
-	              if (TM_DS18B20_AllDone(&OW)) {
-	                  /* Read temperature from device */
-	                  if (TM_DS18B20_Read(&OW, DS_ROM, &temp)) {
-	                      /* Temp read OK, CRC is OK */
-
-	                      /* Start again on all sensors */
-	                      TM_DS18B20_StartAll(&OW);
-
-	                      /* Check temperature */
-	                  } else {
-	                      /* CRC failed, hardware problems on data line */
-	                  }
-	              }
-	          }
+	  DS18B20_ReadAll();
+	  DS18B20_StartAll();
+	uint8_t ROM_tmp[8];
+	uint8_t i;
+	  for(i = 0; i < DS18B20_Quantity(); i++)
+	  		{
+	  			if(DS18B20_GetTemperature(i, &temperature))
+	  			{
+	  				DS18B20_GetROM(i, ROM_tmp);
+	  			}
+	  		}
 
     osDelay(100);
   }

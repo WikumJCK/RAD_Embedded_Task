@@ -13349,3 +13349,621 @@
 2024-02-16 01:40:15,572 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
 2024-02-16 01:40:15,572 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] SLF4J: Defaulting to no-operation (NOP) logger implementation
 2024-02-16 01:40:15,574 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+2024-02-16 01:54:45,477 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 771154944 Bytes (1073741824)
+2024-02-16 01:54:47,034 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 609883648 Bytes (1073741824)
+2024-02-16 02:06:53,068 [ERROR] ConfigurationRetriever:139 - IOException on connection: Read timed out
+2024-02-16 02:11:06,029 [ERROR] RtosPanel:557 - Can not restore the selected Tab for FREERTOS(A reason can be that the tab is no more available.)
+2024-02-16 02:11:34,853 [ERROR] RtosPanel:557 - Can not restore the selected Tab for FREERTOS(A reason can be that the tab is no more available.)
+2024-02-16 02:11:35,187 [ERROR] RtosPanel:557 - Can not restore the selected Tab for FREERTOS(A reason can be that the tab is no more available.)
+2024-02-16 02:11:42,693 [INFO] TasksAndQueuesTab:756 - Dynamic
+2024-02-16 02:11:42,695 [WARN] TasksAndQueuesTab:762 - 256 128
+2024-02-16 02:11:42,696 [WARN] TasksAndQueuesTab:774 - max value is: 3840.0
+2024-02-16 02:11:42,696 [INFO] TasksAndQueuesTab:756 - Dynamic
+2024-02-16 02:11:42,696 [WARN] TasksAndQueuesTab:762 - 256 128
+2024-02-16 02:11:42,696 [WARN] TasksAndQueuesTab:774 - max value is: 3840.0
+2024-02-16 02:11:42,696 [INFO] TasksAndQueuesTab:756 - Dynamic
+2024-02-16 02:11:42,696 [WARN] TasksAndQueuesTab:762 - 256 128
+2024-02-16 02:11:42,696 [WARN] TasksAndQueuesTab:774 - max value is: 3840.0
+2024-02-16 02:11:42,696 [INFO] TasksAndQueuesTab:756 - Dynamic
+2024-02-16 02:11:42,696 [WARN] TasksAndQueuesTab:762 - 128 128
+2024-02-16 02:11:42,696 [WARN] TasksAndQueuesTab:774 - max value is: 3840.0
+2024-02-16 02:11:42,697 [INFO] TasksAndQueuesTab:756 - Dynamic
+2024-02-16 02:11:42,697 [WARN] TasksAndQueuesTab:762 - 128 128
+2024-02-16 02:11:42,697 [WARN] TasksAndQueuesTab:774 - max value is: 3840.0
+2024-02-16 02:11:54,061 [INFO] EditThreadDialog:703 - RAM SIZE (in KB): 192
+2024-02-16 02:11:54,062 [INFO] EditThreadDialog:705 - RAM SIZE (in words): 49152
+2024-02-16 02:12:15,289 [ERROR] RtosPanel:557 - Can not restore the selected Tab for FREERTOS(A reason can be that the tab is no more available.)
+2024-02-16 02:12:15,436 [ERROR] RtosPanel:557 - Can not restore the selected Tab for FREERTOS(A reason can be that the tab is no more available.)
+2024-02-16 02:12:15,741 [ERROR] RtosPanel:557 - Can not restore the selected Tab for FREERTOS(A reason can be that the tab is no more available.)
+2024-02-16 02:12:18,802 [INFO] TasksAndQueuesTab:756 - Dynamic
+2024-02-16 02:12:18,802 [WARN] TasksAndQueuesTab:762 - 256 128
+2024-02-16 02:12:18,802 [WARN] TasksAndQueuesTab:774 - max value is: 3840.0
+2024-02-16 02:12:18,802 [INFO] TasksAndQueuesTab:756 - Dynamic
+2024-02-16 02:12:18,802 [WARN] TasksAndQueuesTab:762 - 256 128
+2024-02-16 02:12:18,802 [WARN] TasksAndQueuesTab:774 - max value is: 3840.0
+2024-02-16 02:12:18,802 [INFO] TasksAndQueuesTab:756 - Dynamic
+2024-02-16 02:12:18,803 [WARN] TasksAndQueuesTab:762 - 256 128
+2024-02-16 02:12:18,803 [WARN] TasksAndQueuesTab:774 - max value is: 3840.0
+2024-02-16 02:12:18,803 [INFO] TasksAndQueuesTab:756 - Dynamic
+2024-02-16 02:12:18,803 [WARN] TasksAndQueuesTab:762 - 128 128
+2024-02-16 02:12:18,803 [WARN] TasksAndQueuesTab:774 - max value is: 3840.0
+2024-02-16 02:12:18,803 [INFO] TasksAndQueuesTab:756 - Dynamic
+2024-02-16 02:12:18,803 [WARN] TasksAndQueuesTab:762 - 128 128
+2024-02-16 02:12:18,804 [WARN] TasksAndQueuesTab:774 - max value is: 3840.0
+2024-02-16 02:12:20,773 [INFO] EditThreadDialog:703 - RAM SIZE (in KB): 192
+2024-02-16 02:12:20,774 [INFO] EditThreadDialog:705 - RAM SIZE (in words): 49152
+2024-02-16 02:12:25,920 [INFO] TasksAndQueuesTab:756 - Dynamic
+2024-02-16 02:12:25,920 [WARN] TasksAndQueuesTab:762 - 256 128
+2024-02-16 02:12:25,920 [WARN] TasksAndQueuesTab:774 - max value is: 3840.0
+2024-02-16 02:12:25,920 [INFO] TasksAndQueuesTab:756 - Dynamic
+2024-02-16 02:12:25,920 [WARN] TasksAndQueuesTab:762 - 256 128
+2024-02-16 02:12:25,920 [WARN] TasksAndQueuesTab:774 - max value is: 3840.0
+2024-02-16 02:12:25,921 [INFO] TasksAndQueuesTab:756 - Dynamic
+2024-02-16 02:12:25,921 [WARN] TasksAndQueuesTab:762 - 256 128
+2024-02-16 02:12:25,921 [WARN] TasksAndQueuesTab:774 - max value is: 3840.0
+2024-02-16 02:12:25,921 [INFO] TasksAndQueuesTab:756 - Dynamic
+2024-02-16 02:12:25,921 [WARN] TasksAndQueuesTab:762 - 128 128
+2024-02-16 02:12:25,921 [WARN] TasksAndQueuesTab:774 - max value is: 3840.0
+2024-02-16 02:12:25,921 [INFO] TasksAndQueuesTab:756 - Dynamic
+2024-02-16 02:12:25,921 [WARN] TasksAndQueuesTab:762 - 128 128
+2024-02-16 02:12:25,921 [WARN] TasksAndQueuesTab:774 - max value is: 3840.0
+2024-02-16 02:12:26,102 [ERROR] RtosPanel:557 - Can not restore the selected Tab for FREERTOS(A reason can be that the tab is no more available.)
+2024-02-16 02:12:32,058 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 792818672 Bytes (1073741824)
+2024-02-16 02:12:33,155 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 846822384 Bytes (1073741824)
+2024-02-16 02:12:36,151 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 773705088 Bytes (1073741824)
+2024-02-16 02:12:37,712 [INFO] BlockDiagram:2753 - set Specific Code input for plugin: SPI
+2024-02-16 02:12:37,712 [INFO] BlockDiagram:2753 - set Specific Code input for plugin: FREERTOS
+2024-02-16 02:12:37,712 [INFO] BlockDiagram:2753 - set Specific Code input for plugin: TIM1_8
+2024-02-16 02:12:37,712 [INFO] BlockDiagram:2753 - set Specific Code input for plugin: TIM1_8
+2024-02-16 02:12:37,712 [INFO] BlockDiagram:2753 - set Specific Code input for plugin: SYS
+2024-02-16 02:12:37,713 [INFO] BlockDiagram:2753 - set Specific Code input for plugin: RCC
+2024-02-16 02:12:37,713 [INFO] BlockDiagram:2753 - set Specific Code input for plugin: I2C
+2024-02-16 02:12:37,713 [INFO] BlockDiagram:2753 - set Specific Code input for plugin: USB_OTG_FS
+2024-02-16 02:12:37,713 [INFO] BlockDiagram:2753 - set Specific Code input for plugin: NVIC
+2024-02-16 02:12:37,713 [INFO] BlockDiagram:2753 - set Specific Code input for plugin: USART
+2024-02-16 02:12:37,713 [INFO] BlockDiagram:2753 - set Specific Code input for plugin: DMA
+2024-02-16 02:12:37,715 [INFO] BlockDiagram:2753 - set Specific Code input for plugin: GPIO
+2024-02-16 02:12:37,716 [INFO] BlockDiagram:2753 - set Specific Code input for plugin: ETH
+2024-02-16 02:12:37,716 [INFO] BlockDiagram:2753 - set Specific Code input for plugin: FATFS
+2024-02-16 02:12:37,719 [INFO] CodeGenerator:690 - code generatio: config db path: C:\ST\STM32CubeIDE_1.10.1\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.6.1.202207061420\\db\
+2024-02-16 02:12:38,495 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\license.tmp_save
+2024-02-16 02:12:39,248 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\license.tmp
+2024-02-16 02:12:39,429 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\gpio.tmp_save
+2024-02-16 02:12:39,780 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\gpio.tmp
+2024-02-16 02:12:44,387 [WARN] IPConfigManager:2910 - Warning: the RefConfig PWREx_EnableUSBVoltageDetector is not available in your config.xml file
+2024-02-16 02:12:44,460 [INFO] Middleware:1435 - No code input for Bsp Dependency
+2024-02-16 02:12:44,484 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\rtos_inc.tmp_save
+2024-02-16 02:12:44,700 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\rtos_inc.tmp
+2024-02-16 02:12:44,723 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\rtos_vars.tmp_save
+2024-02-16 02:12:44,937 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\rtos_vars.tmp
+2024-02-16 02:12:44,957 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\rtos_pfp.tmp_save
+2024-02-16 02:12:45,144 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\rtos_pfp.tmp
+2024-02-16 02:12:45,166 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\rtos_obj_creat.tmp_save
+2024-02-16 02:12:45,363 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\rtos_obj_creat.tmp
+2024-02-16 02:12:45,381 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\rtos_kernelStart.tmp_save
+2024-02-16 02:12:45,539 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\rtos_kernelStart.tmp
+2024-02-16 02:12:45,563 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\rtos_default_thread.tmp_save
+2024-02-16 02:12:45,758 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\rtos_default_thread.tmp
+2024-02-16 02:12:45,784 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\rtos_threads.tmp_save
+2024-02-16 02:12:45,987 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\rtos_threads.tmp
+2024-02-16 02:12:46,003 [INFO] Middleware:1435 - No code input for Bsp Dependency
+2024-02-16 02:12:46,026 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\fatfs_HalInit.tmp_save
+2024-02-16 02:12:46,225 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\fatfs_HalInit.tmp
+2024-02-16 02:12:46,245 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\fatfs_vars.tmp_save
+2024-02-16 02:12:46,394 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\fatfs_vars.tmp
+2024-02-16 02:12:46,411 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\fatfs_ext_vars.tmp_save
+2024-02-16 02:12:46,554 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\fatfs_ext_vars.tmp
+2024-02-16 02:12:46,584 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\fatfs_inc.tmp_save
+2024-02-16 02:12:46,724 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\fatfs_inc.tmp
+2024-02-16 02:12:46,776 [INFO] Middleware:1435 - No code input for Bsp Dependency
+2024-02-16 02:12:46,792 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\rtos_inc.tmp_save
+2024-02-16 02:12:46,976 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\rtos_inc.tmp
+2024-02-16 02:12:46,985 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\rtos_vars.tmp_save
+2024-02-16 02:12:47,117 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\rtos_vars.tmp
+2024-02-16 02:12:47,127 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\rtos_pfp.tmp_save
+2024-02-16 02:12:47,248 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\rtos_pfp.tmp
+2024-02-16 02:12:47,271 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\rtos_obj_creat.tmp_save
+2024-02-16 02:12:47,397 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\rtos_obj_creat.tmp
+2024-02-16 02:12:47,406 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\rtos_kernelStart.tmp_save
+2024-02-16 02:12:47,525 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\rtos_kernelStart.tmp
+2024-02-16 02:12:47,535 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\rtos_default_thread.tmp_save
+2024-02-16 02:12:47,666 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\rtos_default_thread.tmp
+2024-02-16 02:12:47,680 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\rtos_threads.tmp_save
+2024-02-16 02:12:47,821 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\rtos_threads.tmp
+2024-02-16 02:12:47,861 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\Core\Inc\FreeRTOSConfig.h_save
+2024-02-16 02:12:48,047 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\Core\Inc\FreeRTOSConfig.h
+2024-02-16 02:12:48,087 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\Core\Src\freertos.c_save
+2024-02-16 02:12:48,274 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\Core\Src\freertos.c
+2024-02-16 02:12:48,778 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\dma.tmp_save
+2024-02-16 02:12:48,972 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\dma.tmp
+2024-02-16 02:12:49,001 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\dma_GV.tmp_save
+2024-02-16 02:12:49,131 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\dma_GV.tmp
+2024-02-16 02:12:49,140 [INFO] Middleware:1435 - No code input for Bsp Dependency
+2024-02-16 02:12:49,154 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\fatfs_HalInit.tmp_save
+2024-02-16 02:12:49,320 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\fatfs_HalInit.tmp
+2024-02-16 02:12:49,329 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\fatfs_vars.tmp_save
+2024-02-16 02:12:49,451 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\fatfs_vars.tmp
+2024-02-16 02:12:49,462 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\fatfs_ext_vars.tmp_save
+2024-02-16 02:12:49,581 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\fatfs_ext_vars.tmp
+2024-02-16 02:12:49,592 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\fatfs_inc.tmp_save
+2024-02-16 02:12:49,719 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\fatfs_inc.tmp
+2024-02-16 02:12:49,764 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\FATFS\Target\ffconf.h_save
+2024-02-16 02:12:49,998 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\FATFS\Target\ffconf.h
+2024-02-16 02:12:50,038 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\FATFS\Target\user_diskio.c_save
+2024-02-16 02:12:50,216 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\FATFS\Target\user_diskio.c
+2024-02-16 02:12:50,262 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\FATFS\Target\user_diskio.h_save
+2024-02-16 02:12:50,420 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\FATFS\Target\user_diskio.h
+2024-02-16 02:12:50,457 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\FATFS\App\fatfs.c_save
+2024-02-16 02:12:50,637 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\FATFS\App\fatfs.c
+2024-02-16 02:12:50,676 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\FATFS\App\fatfs.h_save
+2024-02-16 02:12:50,865 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\FATFS\App\fatfs.h
+2024-02-16 02:12:50,930 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\Core\Src\stm32f4xx_it.c_save
+2024-02-16 02:12:51,261 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\Core\Src\stm32f4xx_it.c
+2024-02-16 02:12:51,301 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\Core\Inc\stm32f4xx_it.h_save
+2024-02-16 02:12:51,485 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\Core\Inc\stm32f4xx_it.h
+2024-02-16 02:12:51,547 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\Core\Src\stm32f4xx_hal_msp.c_save
+2024-02-16 02:12:51,922 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\Core\Src\stm32f4xx_hal_msp.c
+2024-02-16 02:12:51,948 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\system.tmp_save
+2024-02-16 02:12:52,133 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\system.tmp
+2024-02-16 02:12:52,177 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\Core\Src\stm32f4xx_hal_timebase_tim.c_save
+2024-02-16 02:12:52,353 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\Core\Src\stm32f4xx_hal_timebase_tim.c
+2024-02-16 02:12:52,403 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\Core\Inc\stm32f4xx_hal_conf.h_save
+2024-02-16 02:12:52,618 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\Core\Inc\stm32f4xx_hal_conf.h
+2024-02-16 02:12:52,687 [WARN] IPConfigManager:3348 - IP not found : TIM
+2024-02-16 02:12:52,688 [WARN] IPConfigManager:3348 - IP not found : USB_OTG
+2024-02-16 02:12:52,690 [WARN] CodeGenerator:3567 - IP not found : null
+2024-02-16 02:12:52,691 [WARN] CodeGenerator:3567 - IP not found : null
+2024-02-16 02:12:52,734 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\Core\Inc\main.h_save
+2024-02-16 02:12:52,946 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\Core\Inc\main.h
+2024-02-16 02:12:52,988 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\Core\Src\main.c_save
+2024-02-16 02:12:53,531 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\Core\Src\main.c
+2024-02-16 02:12:55,226 [INFO] ProjectBuilder:2919 - Time for Copy HAL[1] : 621mS.
+2024-02-16 02:12:55,368 [INFO] ProjectBuilder:4117 - Project Generator version: 3.17.1
+2024-02-16 02:12:55,997 [INFO] ConfigFileManager:1394 - The Die is : DIE419
+2024-02-16 02:12:56,014 [INFO] ApiDbMcu:505 - Load IP Config File for LIBJPEG
+2024-02-16 02:12:56,037 [INFO] ApiDbMcu:505 - Load IP Config File for LWIP
+2024-02-16 02:12:56,060 [INFO] ApiDbMcu:505 - Load IP Config File for MBEDTLS
+2024-02-16 02:12:56,085 [INFO] ApiDbMcu:505 - Load IP Config File for USB_DEVICE
+2024-02-16 02:12:56,104 [INFO] ApiDbMcu:505 - Load IP Config File for USB_HOST
+2024-02-16 02:13:01,099 [INFO] ProjectBuilder:4285 - Time for Generating toolchain IDE Files: 5730mS.
+2024-02-16 02:13:01,101 [INFO] ProjectBuilder:2790 - Time for Copy CMSIS : 1mS.
+2024-02-16 02:13:01,116 [INFO] ProjectBuilder:2790 - Time for Copy CMSIS : 0mS.
+2024-02-16 02:18:04,420 [INFO] NvicIntPanel:100 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,452x237,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2024-02-16 02:25:19,031 [INFO] NvicIntPanel:100 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2024-02-16 02:26:26,689 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 624025744 Bytes (1073741824)
+2024-02-16 02:26:30,444 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 623733824 Bytes (1073741824)
+2024-02-16 02:26:33,179 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 764536832 Bytes (1073741824)
+2024-02-16 02:26:34,112 [INFO] BlockDiagram:2753 - set Specific Code input for plugin: SPI
+2024-02-16 02:26:34,113 [INFO] BlockDiagram:2753 - set Specific Code input for plugin: FREERTOS
+2024-02-16 02:26:34,113 [INFO] BlockDiagram:2753 - set Specific Code input for plugin: TIM1_8
+2024-02-16 02:26:34,113 [INFO] BlockDiagram:2753 - set Specific Code input for plugin: TIM1_8
+2024-02-16 02:26:34,113 [INFO] BlockDiagram:2753 - set Specific Code input for plugin: SYS
+2024-02-16 02:26:34,113 [INFO] BlockDiagram:2753 - set Specific Code input for plugin: RCC
+2024-02-16 02:26:34,113 [INFO] BlockDiagram:2753 - set Specific Code input for plugin: I2C
+2024-02-16 02:26:34,113 [INFO] BlockDiagram:2753 - set Specific Code input for plugin: USB_OTG_FS
+2024-02-16 02:26:34,115 [INFO] BlockDiagram:2753 - set Specific Code input for plugin: NVIC
+2024-02-16 02:26:34,115 [INFO] BlockDiagram:2753 - set Specific Code input for plugin: USART
+2024-02-16 02:26:34,115 [INFO] BlockDiagram:2753 - set Specific Code input for plugin: DMA
+2024-02-16 02:26:34,116 [INFO] BlockDiagram:2753 - set Specific Code input for plugin: GPIO
+2024-02-16 02:26:34,116 [INFO] BlockDiagram:2753 - set Specific Code input for plugin: ETH
+2024-02-16 02:26:34,116 [INFO] BlockDiagram:2753 - set Specific Code input for plugin: FATFS
+2024-02-16 02:26:34,118 [INFO] CodeGenerator:690 - code generatio: config db path: C:\ST\STM32CubeIDE_1.10.1\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.6.1.202207061420\\db\
+2024-02-16 02:26:34,144 [INFO] Argument:300 - Argument : hdmavalue: null
+2024-02-16 02:26:34,145 [INFO] Argument:302 - 	 sub Args: 
+2024-02-16 02:26:34,145 [INFO] Argument:300 - Argument : Instancevalue: DMA1_Stream3
+2024-02-16 02:26:34,145 [INFO] Argument:310 - Argument : Instancevalue: DMA1_Stream3
+2024-02-16 02:26:34,145 [INFO] Argument:300 - Argument : Initvalue: null
+2024-02-16 02:26:34,145 [INFO] Argument:302 - 	 sub Args: 
+2024-02-16 02:26:34,145 [INFO] Argument:300 - Argument : Channelvalue: DMA_CHANNEL_7
+2024-02-16 02:26:34,145 [INFO] Argument:310 - Argument : Channelvalue: DMA_CHANNEL_7
+2024-02-16 02:26:34,145 [INFO] Argument:300 - Argument : Directionvalue: DMA_PERIPH_TO_MEMORY
+2024-02-16 02:26:34,145 [INFO] Argument:310 - Argument : Directionvalue: DMA_PERIPH_TO_MEMORY
+2024-02-16 02:26:34,146 [INFO] Argument:300 - Argument : PeriphIncvalue: DMA_PINC_DISABLE
+2024-02-16 02:26:34,146 [INFO] Argument:310 - Argument : PeriphIncvalue: DMA_PINC_DISABLE
+2024-02-16 02:26:34,146 [INFO] Argument:300 - Argument : MemIncvalue: DMA_MINC_ENABLE
+2024-02-16 02:26:34,146 [INFO] Argument:310 - Argument : MemIncvalue: DMA_MINC_ENABLE
+2024-02-16 02:26:34,146 [INFO] Argument:300 - Argument : PeriphDataAlignmentvalue: DMA_PDATAALIGN_BYTE
+2024-02-16 02:26:34,146 [INFO] Argument:310 - Argument : PeriphDataAlignmentvalue: DMA_PDATAALIGN_BYTE
+2024-02-16 02:26:34,146 [INFO] Argument:300 - Argument : MemDataAlignmentvalue: DMA_MDATAALIGN_BYTE
+2024-02-16 02:26:34,146 [INFO] Argument:310 - Argument : MemDataAlignmentvalue: DMA_MDATAALIGN_BYTE
+2024-02-16 02:26:34,146 [INFO] Argument:300 - Argument : Modevalue: DMA_NORMAL
+2024-02-16 02:26:34,146 [INFO] Argument:310 - Argument : Modevalue: DMA_NORMAL
+2024-02-16 02:26:34,146 [INFO] Argument:300 - Argument : Priorityvalue: DMA_PRIORITY_LOW
+2024-02-16 02:26:34,147 [INFO] Argument:310 - Argument : Priorityvalue: DMA_PRIORITY_LOW
+2024-02-16 02:26:34,147 [INFO] Argument:300 - Argument : FIFOModevalue: DMA_FIFOMODE_DISABLE
+2024-02-16 02:26:34,147 [INFO] Argument:310 - Argument : FIFOModevalue: DMA_FIFOMODE_DISABLE
+2024-02-16 02:26:34,147 [INFO] Argument:300 - Argument : FIFOThresholdvalue: null
+2024-02-16 02:26:34,147 [INFO] Argument:310 - Argument : FIFOThresholdvalue: null
+2024-02-16 02:26:34,147 [INFO] Argument:300 - Argument : MemBurstvalue: null
+2024-02-16 02:26:34,147 [INFO] Argument:310 - Argument : MemBurstvalue: null
+2024-02-16 02:26:34,147 [INFO] Argument:300 - Argument : PeriphBurstvalue: null
+2024-02-16 02:26:34,147 [INFO] Argument:310 - Argument : PeriphBurstvalue: null
+2024-02-16 02:26:34,147 [INFO] Argument:300 - Argument : Lockvalue: null
+2024-02-16 02:26:34,147 [INFO] Argument:310 - Argument : Lockvalue: null
+2024-02-16 02:26:34,147 [INFO] Argument:300 - Argument : Statevalue: null
+2024-02-16 02:26:34,148 [INFO] Argument:310 - Argument : Statevalue: null
+2024-02-16 02:26:34,148 [INFO] Argument:300 - Argument : Parentvalue: null
+2024-02-16 02:26:34,148 [INFO] Argument:310 - Argument : Parentvalue: null
+2024-02-16 02:26:34,148 [INFO] Argument:300 - Argument : XferCpltCallbackvalue: null
+2024-02-16 02:26:34,148 [INFO] Argument:310 - Argument : XferCpltCallbackvalue: null
+2024-02-16 02:26:34,148 [INFO] Argument:300 - Argument : XferHalfCpltCallbackvalue: null
+2024-02-16 02:26:34,148 [INFO] Argument:310 - Argument : XferHalfCpltCallbackvalue: null
+2024-02-16 02:26:34,148 [INFO] Argument:300 - Argument : XferM1CpltCallbackvalue: null
+2024-02-16 02:26:34,148 [INFO] Argument:310 - Argument : XferM1CpltCallbackvalue: null
+2024-02-16 02:26:34,148 [INFO] Argument:300 - Argument : XferErrorCallbackvalue: null
+2024-02-16 02:26:34,149 [INFO] Argument:310 - Argument : XferErrorCallbackvalue: null
+2024-02-16 02:26:34,149 [INFO] Argument:300 - Argument : ErrorCodevalue: null
+2024-02-16 02:26:34,149 [INFO] Argument:310 - Argument : ErrorCodevalue: null
+2024-02-16 02:26:34,150 [INFO] Argument:300 - Argument : hdmavalue: null
+2024-02-16 02:26:34,151 [INFO] Argument:302 - 	 sub Args: 
+2024-02-16 02:26:34,151 [INFO] Argument:300 - Argument : Instancevalue: DMA1_Stream7
+2024-02-16 02:26:34,151 [INFO] Argument:310 - Argument : Instancevalue: DMA1_Stream7
+2024-02-16 02:26:34,151 [INFO] Argument:300 - Argument : Initvalue: null
+2024-02-16 02:26:34,151 [INFO] Argument:302 - 	 sub Args: 
+2024-02-16 02:26:34,151 [INFO] Argument:300 - Argument : Channelvalue: DMA_CHANNEL_7
+2024-02-16 02:26:34,151 [INFO] Argument:310 - Argument : Channelvalue: DMA_CHANNEL_7
+2024-02-16 02:26:34,151 [INFO] Argument:300 - Argument : Directionvalue: DMA_MEMORY_TO_PERIPH
+2024-02-16 02:26:34,151 [INFO] Argument:310 - Argument : Directionvalue: DMA_MEMORY_TO_PERIPH
+2024-02-16 02:26:34,152 [INFO] Argument:300 - Argument : PeriphIncvalue: DMA_PINC_DISABLE
+2024-02-16 02:26:34,152 [INFO] Argument:310 - Argument : PeriphIncvalue: DMA_PINC_DISABLE
+2024-02-16 02:26:34,152 [INFO] Argument:300 - Argument : MemIncvalue: DMA_MINC_ENABLE
+2024-02-16 02:26:34,152 [INFO] Argument:310 - Argument : MemIncvalue: DMA_MINC_ENABLE
+2024-02-16 02:26:34,152 [INFO] Argument:300 - Argument : PeriphDataAlignmentvalue: DMA_PDATAALIGN_BYTE
+2024-02-16 02:26:34,152 [INFO] Argument:310 - Argument : PeriphDataAlignmentvalue: DMA_PDATAALIGN_BYTE
+2024-02-16 02:26:34,152 [INFO] Argument:300 - Argument : MemDataAlignmentvalue: DMA_MDATAALIGN_BYTE
+2024-02-16 02:26:34,152 [INFO] Argument:310 - Argument : MemDataAlignmentvalue: DMA_MDATAALIGN_BYTE
+2024-02-16 02:26:34,152 [INFO] Argument:300 - Argument : Modevalue: DMA_NORMAL
+2024-02-16 02:26:34,152 [INFO] Argument:310 - Argument : Modevalue: DMA_NORMAL
+2024-02-16 02:26:34,152 [INFO] Argument:300 - Argument : Priorityvalue: DMA_PRIORITY_LOW
+2024-02-16 02:26:34,152 [INFO] Argument:310 - Argument : Priorityvalue: DMA_PRIORITY_LOW
+2024-02-16 02:26:34,153 [INFO] Argument:300 - Argument : FIFOModevalue: DMA_FIFOMODE_DISABLE
+2024-02-16 02:26:34,153 [INFO] Argument:310 - Argument : FIFOModevalue: DMA_FIFOMODE_DISABLE
+2024-02-16 02:26:34,153 [INFO] Argument:300 - Argument : FIFOThresholdvalue: null
+2024-02-16 02:26:34,153 [INFO] Argument:310 - Argument : FIFOThresholdvalue: null
+2024-02-16 02:26:34,153 [INFO] Argument:300 - Argument : MemBurstvalue: null
+2024-02-16 02:26:34,153 [INFO] Argument:310 - Argument : MemBurstvalue: null
+2024-02-16 02:26:34,153 [INFO] Argument:300 - Argument : PeriphBurstvalue: null
+2024-02-16 02:26:34,153 [INFO] Argument:310 - Argument : PeriphBurstvalue: null
+2024-02-16 02:26:34,153 [INFO] Argument:300 - Argument : Lockvalue: null
+2024-02-16 02:26:34,153 [INFO] Argument:310 - Argument : Lockvalue: null
+2024-02-16 02:26:34,153 [INFO] Argument:300 - Argument : Statevalue: null
+2024-02-16 02:26:34,153 [INFO] Argument:310 - Argument : Statevalue: null
+2024-02-16 02:26:34,155 [INFO] Argument:300 - Argument : Parentvalue: null
+2024-02-16 02:26:34,155 [INFO] Argument:310 - Argument : Parentvalue: null
+2024-02-16 02:26:34,155 [INFO] Argument:300 - Argument : XferCpltCallbackvalue: null
+2024-02-16 02:26:34,155 [INFO] Argument:310 - Argument : XferCpltCallbackvalue: null
+2024-02-16 02:26:34,155 [INFO] Argument:300 - Argument : XferHalfCpltCallbackvalue: null
+2024-02-16 02:26:34,155 [INFO] Argument:310 - Argument : XferHalfCpltCallbackvalue: null
+2024-02-16 02:26:34,155 [INFO] Argument:300 - Argument : XferM1CpltCallbackvalue: null
+2024-02-16 02:26:34,155 [INFO] Argument:310 - Argument : XferM1CpltCallbackvalue: null
+2024-02-16 02:26:34,155 [INFO] Argument:300 - Argument : XferErrorCallbackvalue: null
+2024-02-16 02:26:34,155 [INFO] Argument:310 - Argument : XferErrorCallbackvalue: null
+2024-02-16 02:26:34,155 [INFO] Argument:300 - Argument : ErrorCodevalue: null
+2024-02-16 02:26:34,156 [INFO] Argument:310 - Argument : ErrorCodevalue: null
+2024-02-16 02:26:34,181 [INFO] Argument:300 - Argument : hdmavalue: null
+2024-02-16 02:26:34,182 [INFO] Argument:302 - 	 sub Args: 
+2024-02-16 02:26:34,182 [INFO] Argument:300 - Argument : Instancevalue: DMA2_Stream2
+2024-02-16 02:26:34,182 [INFO] Argument:310 - Argument : Instancevalue: DMA2_Stream2
+2024-02-16 02:26:34,182 [INFO] Argument:300 - Argument : Initvalue: null
+2024-02-16 02:26:34,182 [INFO] Argument:302 - 	 sub Args: 
+2024-02-16 02:26:34,182 [INFO] Argument:300 - Argument : Channelvalue: DMA_CHANNEL_3
+2024-02-16 02:26:34,182 [INFO] Argument:310 - Argument : Channelvalue: DMA_CHANNEL_3
+2024-02-16 02:26:34,182 [INFO] Argument:300 - Argument : Directionvalue: DMA_PERIPH_TO_MEMORY
+2024-02-16 02:26:34,182 [INFO] Argument:310 - Argument : Directionvalue: DMA_PERIPH_TO_MEMORY
+2024-02-16 02:26:34,182 [INFO] Argument:300 - Argument : PeriphIncvalue: DMA_PINC_DISABLE
+2024-02-16 02:26:34,182 [INFO] Argument:310 - Argument : PeriphIncvalue: DMA_PINC_DISABLE
+2024-02-16 02:26:34,183 [INFO] Argument:300 - Argument : MemIncvalue: DMA_MINC_ENABLE
+2024-02-16 02:26:34,183 [INFO] Argument:310 - Argument : MemIncvalue: DMA_MINC_ENABLE
+2024-02-16 02:26:34,183 [INFO] Argument:300 - Argument : PeriphDataAlignmentvalue: DMA_PDATAALIGN_BYTE
+2024-02-16 02:26:34,183 [INFO] Argument:310 - Argument : PeriphDataAlignmentvalue: DMA_PDATAALIGN_BYTE
+2024-02-16 02:26:34,183 [INFO] Argument:300 - Argument : MemDataAlignmentvalue: DMA_MDATAALIGN_BYTE
+2024-02-16 02:26:34,183 [INFO] Argument:310 - Argument : MemDataAlignmentvalue: DMA_MDATAALIGN_BYTE
+2024-02-16 02:26:34,183 [INFO] Argument:300 - Argument : Modevalue: DMA_NORMAL
+2024-02-16 02:26:34,183 [INFO] Argument:310 - Argument : Modevalue: DMA_NORMAL
+2024-02-16 02:26:34,183 [INFO] Argument:300 - Argument : Priorityvalue: DMA_PRIORITY_MEDIUM
+2024-02-16 02:26:34,184 [INFO] Argument:310 - Argument : Priorityvalue: DMA_PRIORITY_MEDIUM
+2024-02-16 02:26:34,184 [INFO] Argument:300 - Argument : FIFOModevalue: DMA_FIFOMODE_DISABLE
+2024-02-16 02:26:34,184 [INFO] Argument:310 - Argument : FIFOModevalue: DMA_FIFOMODE_DISABLE
+2024-02-16 02:26:34,184 [INFO] Argument:300 - Argument : FIFOThresholdvalue: null
+2024-02-16 02:26:34,184 [INFO] Argument:310 - Argument : FIFOThresholdvalue: null
+2024-02-16 02:26:34,184 [INFO] Argument:300 - Argument : MemBurstvalue: null
+2024-02-16 02:26:34,184 [INFO] Argument:310 - Argument : MemBurstvalue: null
+2024-02-16 02:26:34,184 [INFO] Argument:300 - Argument : PeriphBurstvalue: null
+2024-02-16 02:26:34,185 [INFO] Argument:310 - Argument : PeriphBurstvalue: null
+2024-02-16 02:26:34,185 [INFO] Argument:300 - Argument : Lockvalue: null
+2024-02-16 02:26:34,185 [INFO] Argument:310 - Argument : Lockvalue: null
+2024-02-16 02:26:34,185 [INFO] Argument:300 - Argument : Statevalue: null
+2024-02-16 02:26:34,185 [INFO] Argument:310 - Argument : Statevalue: null
+2024-02-16 02:26:34,185 [INFO] Argument:300 - Argument : Parentvalue: null
+2024-02-16 02:26:34,185 [INFO] Argument:310 - Argument : Parentvalue: null
+2024-02-16 02:26:34,185 [INFO] Argument:300 - Argument : XferCpltCallbackvalue: null
+2024-02-16 02:26:34,185 [INFO] Argument:310 - Argument : XferCpltCallbackvalue: null
+2024-02-16 02:26:34,186 [INFO] Argument:300 - Argument : XferHalfCpltCallbackvalue: null
+2024-02-16 02:26:34,186 [INFO] Argument:310 - Argument : XferHalfCpltCallbackvalue: null
+2024-02-16 02:26:34,186 [INFO] Argument:300 - Argument : XferM1CpltCallbackvalue: null
+2024-02-16 02:26:34,186 [INFO] Argument:310 - Argument : XferM1CpltCallbackvalue: null
+2024-02-16 02:26:34,186 [INFO] Argument:300 - Argument : XferErrorCallbackvalue: null
+2024-02-16 02:26:34,186 [INFO] Argument:310 - Argument : XferErrorCallbackvalue: null
+2024-02-16 02:26:34,186 [INFO] Argument:300 - Argument : ErrorCodevalue: null
+2024-02-16 02:26:34,186 [INFO] Argument:310 - Argument : ErrorCodevalue: null
+2024-02-16 02:26:34,188 [INFO] Argument:300 - Argument : hdmavalue: null
+2024-02-16 02:26:34,188 [INFO] Argument:302 - 	 sub Args: 
+2024-02-16 02:26:34,188 [INFO] Argument:300 - Argument : Instancevalue: DMA2_Stream5
+2024-02-16 02:26:34,188 [INFO] Argument:310 - Argument : Instancevalue: DMA2_Stream5
+2024-02-16 02:26:34,188 [INFO] Argument:300 - Argument : Initvalue: null
+2024-02-16 02:26:34,188 [INFO] Argument:302 - 	 sub Args: 
+2024-02-16 02:26:34,188 [INFO] Argument:300 - Argument : Channelvalue: DMA_CHANNEL_3
+2024-02-16 02:26:34,189 [INFO] Argument:310 - Argument : Channelvalue: DMA_CHANNEL_3
+2024-02-16 02:26:34,189 [INFO] Argument:300 - Argument : Directionvalue: DMA_MEMORY_TO_PERIPH
+2024-02-16 02:26:34,189 [INFO] Argument:310 - Argument : Directionvalue: DMA_MEMORY_TO_PERIPH
+2024-02-16 02:26:34,189 [INFO] Argument:300 - Argument : PeriphIncvalue: DMA_PINC_DISABLE
+2024-02-16 02:26:34,189 [INFO] Argument:310 - Argument : PeriphIncvalue: DMA_PINC_DISABLE
+2024-02-16 02:26:34,189 [INFO] Argument:300 - Argument : MemIncvalue: DMA_MINC_ENABLE
+2024-02-16 02:26:34,189 [INFO] Argument:310 - Argument : MemIncvalue: DMA_MINC_ENABLE
+2024-02-16 02:26:34,189 [INFO] Argument:300 - Argument : PeriphDataAlignmentvalue: DMA_PDATAALIGN_BYTE
+2024-02-16 02:26:34,189 [INFO] Argument:310 - Argument : PeriphDataAlignmentvalue: DMA_PDATAALIGN_BYTE
+2024-02-16 02:26:34,189 [INFO] Argument:300 - Argument : MemDataAlignmentvalue: DMA_MDATAALIGN_BYTE
+2024-02-16 02:26:34,189 [INFO] Argument:310 - Argument : MemDataAlignmentvalue: DMA_MDATAALIGN_BYTE
+2024-02-16 02:26:34,189 [INFO] Argument:300 - Argument : Modevalue: DMA_NORMAL
+2024-02-16 02:26:34,190 [INFO] Argument:310 - Argument : Modevalue: DMA_NORMAL
+2024-02-16 02:26:34,190 [INFO] Argument:300 - Argument : Priorityvalue: DMA_PRIORITY_MEDIUM
+2024-02-16 02:26:34,190 [INFO] Argument:310 - Argument : Priorityvalue: DMA_PRIORITY_MEDIUM
+2024-02-16 02:26:34,190 [INFO] Argument:300 - Argument : FIFOModevalue: DMA_FIFOMODE_DISABLE
+2024-02-16 02:26:34,190 [INFO] Argument:310 - Argument : FIFOModevalue: DMA_FIFOMODE_DISABLE
+2024-02-16 02:26:34,190 [INFO] Argument:300 - Argument : FIFOThresholdvalue: null
+2024-02-16 02:26:34,190 [INFO] Argument:310 - Argument : FIFOThresholdvalue: null
+2024-02-16 02:26:34,191 [INFO] Argument:300 - Argument : MemBurstvalue: null
+2024-02-16 02:26:34,191 [INFO] Argument:310 - Argument : MemBurstvalue: null
+2024-02-16 02:26:34,191 [INFO] Argument:300 - Argument : PeriphBurstvalue: null
+2024-02-16 02:26:34,191 [INFO] Argument:310 - Argument : PeriphBurstvalue: null
+2024-02-16 02:26:34,191 [INFO] Argument:300 - Argument : Lockvalue: null
+2024-02-16 02:26:34,191 [INFO] Argument:310 - Argument : Lockvalue: null
+2024-02-16 02:26:34,191 [INFO] Argument:300 - Argument : Statevalue: null
+2024-02-16 02:26:34,191 [INFO] Argument:310 - Argument : Statevalue: null
+2024-02-16 02:26:34,191 [INFO] Argument:300 - Argument : Parentvalue: null
+2024-02-16 02:26:34,191 [INFO] Argument:310 - Argument : Parentvalue: null
+2024-02-16 02:26:34,191 [INFO] Argument:300 - Argument : XferCpltCallbackvalue: null
+2024-02-16 02:26:34,191 [INFO] Argument:310 - Argument : XferCpltCallbackvalue: null
+2024-02-16 02:26:34,192 [INFO] Argument:300 - Argument : XferHalfCpltCallbackvalue: null
+2024-02-16 02:26:34,192 [INFO] Argument:310 - Argument : XferHalfCpltCallbackvalue: null
+2024-02-16 02:26:34,192 [INFO] Argument:300 - Argument : XferM1CpltCallbackvalue: null
+2024-02-16 02:26:34,192 [INFO] Argument:310 - Argument : XferM1CpltCallbackvalue: null
+2024-02-16 02:26:34,192 [INFO] Argument:300 - Argument : XferErrorCallbackvalue: null
+2024-02-16 02:26:34,192 [INFO] Argument:310 - Argument : XferErrorCallbackvalue: null
+2024-02-16 02:26:34,192 [INFO] Argument:300 - Argument : ErrorCodevalue: null
+2024-02-16 02:26:34,193 [INFO] Argument:310 - Argument : ErrorCodevalue: null
+2024-02-16 02:26:34,202 [INFO] Argument:300 - Argument : hdmavalue: null
+2024-02-16 02:26:34,202 [INFO] Argument:302 - 	 sub Args: 
+2024-02-16 02:26:34,202 [INFO] Argument:300 - Argument : Instancevalue: DMA2_Stream1
+2024-02-16 02:26:34,202 [INFO] Argument:310 - Argument : Instancevalue: DMA2_Stream1
+2024-02-16 02:26:34,202 [INFO] Argument:300 - Argument : Initvalue: null
+2024-02-16 02:26:34,202 [INFO] Argument:302 - 	 sub Args: 
+2024-02-16 02:26:34,202 [INFO] Argument:300 - Argument : Channelvalue: DMA_CHANNEL_6
+2024-02-16 02:26:34,202 [INFO] Argument:310 - Argument : Channelvalue: DMA_CHANNEL_6
+2024-02-16 02:26:34,202 [INFO] Argument:300 - Argument : Directionvalue: DMA_MEMORY_TO_PERIPH
+2024-02-16 02:26:34,203 [INFO] Argument:310 - Argument : Directionvalue: DMA_MEMORY_TO_PERIPH
+2024-02-16 02:26:34,203 [INFO] Argument:300 - Argument : PeriphIncvalue: DMA_PINC_DISABLE
+2024-02-16 02:26:34,203 [INFO] Argument:310 - Argument : PeriphIncvalue: DMA_PINC_DISABLE
+2024-02-16 02:26:34,203 [INFO] Argument:300 - Argument : MemIncvalue: DMA_MINC_ENABLE
+2024-02-16 02:26:34,203 [INFO] Argument:310 - Argument : MemIncvalue: DMA_MINC_ENABLE
+2024-02-16 02:26:34,203 [INFO] Argument:300 - Argument : PeriphDataAlignmentvalue: DMA_PDATAALIGN_HALFWORD
+2024-02-16 02:26:34,203 [INFO] Argument:310 - Argument : PeriphDataAlignmentvalue: DMA_PDATAALIGN_HALFWORD
+2024-02-16 02:26:34,203 [INFO] Argument:300 - Argument : MemDataAlignmentvalue: DMA_MDATAALIGN_HALFWORD
+2024-02-16 02:26:34,203 [INFO] Argument:310 - Argument : MemDataAlignmentvalue: DMA_MDATAALIGN_HALFWORD
+2024-02-16 02:26:34,203 [INFO] Argument:300 - Argument : Modevalue: DMA_NORMAL
+2024-02-16 02:26:34,203 [INFO] Argument:310 - Argument : Modevalue: DMA_NORMAL
+2024-02-16 02:26:34,203 [INFO] Argument:300 - Argument : Priorityvalue: DMA_PRIORITY_LOW
+2024-02-16 02:26:34,204 [INFO] Argument:310 - Argument : Priorityvalue: DMA_PRIORITY_LOW
+2024-02-16 02:26:34,204 [INFO] Argument:300 - Argument : FIFOModevalue: DMA_FIFOMODE_DISABLE
+2024-02-16 02:26:34,204 [INFO] Argument:310 - Argument : FIFOModevalue: DMA_FIFOMODE_DISABLE
+2024-02-16 02:26:34,204 [INFO] Argument:300 - Argument : FIFOThresholdvalue: null
+2024-02-16 02:26:34,204 [INFO] Argument:310 - Argument : FIFOThresholdvalue: null
+2024-02-16 02:26:34,204 [INFO] Argument:300 - Argument : MemBurstvalue: null
+2024-02-16 02:26:34,204 [INFO] Argument:310 - Argument : MemBurstvalue: null
+2024-02-16 02:26:34,205 [INFO] Argument:300 - Argument : PeriphBurstvalue: null
+2024-02-16 02:26:34,205 [INFO] Argument:310 - Argument : PeriphBurstvalue: null
+2024-02-16 02:26:34,205 [INFO] Argument:300 - Argument : Lockvalue: null
+2024-02-16 02:26:34,205 [INFO] Argument:310 - Argument : Lockvalue: null
+2024-02-16 02:26:34,205 [INFO] Argument:300 - Argument : Statevalue: null
+2024-02-16 02:26:34,205 [INFO] Argument:310 - Argument : Statevalue: null
+2024-02-16 02:26:34,205 [INFO] Argument:300 - Argument : Parentvalue: null
+2024-02-16 02:26:34,205 [INFO] Argument:310 - Argument : Parentvalue: null
+2024-02-16 02:26:34,205 [INFO] Argument:300 - Argument : XferCpltCallbackvalue: null
+2024-02-16 02:26:34,206 [INFO] Argument:310 - Argument : XferCpltCallbackvalue: null
+2024-02-16 02:26:34,206 [INFO] Argument:300 - Argument : XferHalfCpltCallbackvalue: null
+2024-02-16 02:26:34,206 [INFO] Argument:310 - Argument : XferHalfCpltCallbackvalue: null
+2024-02-16 02:26:34,206 [INFO] Argument:300 - Argument : XferM1CpltCallbackvalue: null
+2024-02-16 02:26:34,206 [INFO] Argument:310 - Argument : XferM1CpltCallbackvalue: null
+2024-02-16 02:26:34,206 [INFO] Argument:300 - Argument : XferErrorCallbackvalue: null
+2024-02-16 02:26:34,206 [INFO] Argument:310 - Argument : XferErrorCallbackvalue: null
+2024-02-16 02:26:34,207 [INFO] Argument:300 - Argument : ErrorCodevalue: null
+2024-02-16 02:26:34,207 [INFO] Argument:310 - Argument : ErrorCodevalue: null
+2024-02-16 02:26:34,213 [INFO] Argument:300 - Argument : hdmavalue: null
+2024-02-16 02:26:34,213 [INFO] Argument:302 - 	 sub Args: 
+2024-02-16 02:26:34,213 [INFO] Argument:300 - Argument : Instancevalue: DMA1_Stream1
+2024-02-16 02:26:34,214 [INFO] Argument:310 - Argument : Instancevalue: DMA1_Stream1
+2024-02-16 02:26:34,214 [INFO] Argument:300 - Argument : Initvalue: null
+2024-02-16 02:26:34,214 [INFO] Argument:302 - 	 sub Args: 
+2024-02-16 02:26:34,214 [INFO] Argument:300 - Argument : Channelvalue: DMA_CHANNEL_4
+2024-02-16 02:26:34,214 [INFO] Argument:310 - Argument : Channelvalue: DMA_CHANNEL_4
+2024-02-16 02:26:34,214 [INFO] Argument:300 - Argument : Directionvalue: DMA_PERIPH_TO_MEMORY
+2024-02-16 02:26:34,214 [INFO] Argument:310 - Argument : Directionvalue: DMA_PERIPH_TO_MEMORY
+2024-02-16 02:26:34,214 [INFO] Argument:300 - Argument : PeriphIncvalue: DMA_PINC_DISABLE
+2024-02-16 02:26:34,215 [INFO] Argument:310 - Argument : PeriphIncvalue: DMA_PINC_DISABLE
+2024-02-16 02:26:34,215 [INFO] Argument:300 - Argument : MemIncvalue: DMA_MINC_ENABLE
+2024-02-16 02:26:34,215 [INFO] Argument:310 - Argument : MemIncvalue: DMA_MINC_ENABLE
+2024-02-16 02:26:34,215 [INFO] Argument:300 - Argument : PeriphDataAlignmentvalue: DMA_PDATAALIGN_BYTE
+2024-02-16 02:26:34,215 [INFO] Argument:310 - Argument : PeriphDataAlignmentvalue: DMA_PDATAALIGN_BYTE
+2024-02-16 02:26:34,215 [INFO] Argument:300 - Argument : MemDataAlignmentvalue: DMA_MDATAALIGN_BYTE
+2024-02-16 02:26:34,215 [INFO] Argument:310 - Argument : MemDataAlignmentvalue: DMA_MDATAALIGN_BYTE
+2024-02-16 02:26:34,215 [INFO] Argument:300 - Argument : Modevalue: DMA_NORMAL
+2024-02-16 02:26:34,215 [INFO] Argument:310 - Argument : Modevalue: DMA_NORMAL
+2024-02-16 02:26:34,215 [INFO] Argument:300 - Argument : Priorityvalue: DMA_PRIORITY_HIGH
+2024-02-16 02:26:34,215 [INFO] Argument:310 - Argument : Priorityvalue: DMA_PRIORITY_HIGH
+2024-02-16 02:26:34,215 [INFO] Argument:300 - Argument : FIFOModevalue: DMA_FIFOMODE_DISABLE
+2024-02-16 02:26:34,216 [INFO] Argument:310 - Argument : FIFOModevalue: DMA_FIFOMODE_DISABLE
+2024-02-16 02:26:34,216 [INFO] Argument:300 - Argument : FIFOThresholdvalue: null
+2024-02-16 02:26:34,216 [INFO] Argument:310 - Argument : FIFOThresholdvalue: null
+2024-02-16 02:26:34,216 [INFO] Argument:300 - Argument : MemBurstvalue: null
+2024-02-16 02:26:34,216 [INFO] Argument:310 - Argument : MemBurstvalue: null
+2024-02-16 02:26:34,216 [INFO] Argument:300 - Argument : PeriphBurstvalue: null
+2024-02-16 02:26:34,216 [INFO] Argument:310 - Argument : PeriphBurstvalue: null
+2024-02-16 02:26:34,216 [INFO] Argument:300 - Argument : Lockvalue: null
+2024-02-16 02:26:34,216 [INFO] Argument:310 - Argument : Lockvalue: null
+2024-02-16 02:26:34,216 [INFO] Argument:300 - Argument : Statevalue: null
+2024-02-16 02:26:34,216 [INFO] Argument:310 - Argument : Statevalue: null
+2024-02-16 02:26:34,216 [INFO] Argument:300 - Argument : Parentvalue: null
+2024-02-16 02:26:34,217 [INFO] Argument:310 - Argument : Parentvalue: null
+2024-02-16 02:26:34,217 [INFO] Argument:300 - Argument : XferCpltCallbackvalue: null
+2024-02-16 02:26:34,217 [INFO] Argument:310 - Argument : XferCpltCallbackvalue: null
+2024-02-16 02:26:34,217 [INFO] Argument:300 - Argument : XferHalfCpltCallbackvalue: null
+2024-02-16 02:26:34,217 [INFO] Argument:310 - Argument : XferHalfCpltCallbackvalue: null
+2024-02-16 02:26:34,217 [INFO] Argument:300 - Argument : XferM1CpltCallbackvalue: null
+2024-02-16 02:26:34,217 [INFO] Argument:310 - Argument : XferM1CpltCallbackvalue: null
+2024-02-16 02:26:34,217 [INFO] Argument:300 - Argument : XferErrorCallbackvalue: null
+2024-02-16 02:26:34,217 [INFO] Argument:310 - Argument : XferErrorCallbackvalue: null
+2024-02-16 02:26:34,217 [INFO] Argument:300 - Argument : ErrorCodevalue: null
+2024-02-16 02:26:34,217 [INFO] Argument:310 - Argument : ErrorCodevalue: null
+2024-02-16 02:26:34,219 [INFO] Argument:300 - Argument : hdmavalue: null
+2024-02-16 02:26:34,219 [INFO] Argument:302 - 	 sub Args: 
+2024-02-16 02:26:34,219 [INFO] Argument:300 - Argument : Instancevalue: DMA1_Stream4
+2024-02-16 02:26:34,219 [INFO] Argument:310 - Argument : Instancevalue: DMA1_Stream4
+2024-02-16 02:26:34,219 [INFO] Argument:300 - Argument : Initvalue: null
+2024-02-16 02:26:34,220 [INFO] Argument:302 - 	 sub Args: 
+2024-02-16 02:26:34,220 [INFO] Argument:300 - Argument : Channelvalue: DMA_CHANNEL_7
+2024-02-16 02:26:34,220 [INFO] Argument:310 - Argument : Channelvalue: DMA_CHANNEL_7
+2024-02-16 02:26:34,220 [INFO] Argument:300 - Argument : Directionvalue: DMA_MEMORY_TO_PERIPH
+2024-02-16 02:26:34,220 [INFO] Argument:310 - Argument : Directionvalue: DMA_MEMORY_TO_PERIPH
+2024-02-16 02:26:34,220 [INFO] Argument:300 - Argument : PeriphIncvalue: DMA_PINC_DISABLE
+2024-02-16 02:26:34,220 [INFO] Argument:310 - Argument : PeriphIncvalue: DMA_PINC_DISABLE
+2024-02-16 02:26:34,220 [INFO] Argument:300 - Argument : MemIncvalue: DMA_MINC_ENABLE
+2024-02-16 02:26:34,220 [INFO] Argument:310 - Argument : MemIncvalue: DMA_MINC_ENABLE
+2024-02-16 02:26:34,220 [INFO] Argument:300 - Argument : PeriphDataAlignmentvalue: DMA_PDATAALIGN_BYTE
+2024-02-16 02:26:34,220 [INFO] Argument:310 - Argument : PeriphDataAlignmentvalue: DMA_PDATAALIGN_BYTE
+2024-02-16 02:26:34,220 [INFO] Argument:300 - Argument : MemDataAlignmentvalue: DMA_MDATAALIGN_BYTE
+2024-02-16 02:26:34,221 [INFO] Argument:310 - Argument : MemDataAlignmentvalue: DMA_MDATAALIGN_BYTE
+2024-02-16 02:26:34,221 [INFO] Argument:300 - Argument : Modevalue: DMA_NORMAL
+2024-02-16 02:26:34,221 [INFO] Argument:310 - Argument : Modevalue: DMA_NORMAL
+2024-02-16 02:26:34,221 [INFO] Argument:300 - Argument : Priorityvalue: DMA_PRIORITY_HIGH
+2024-02-16 02:26:34,221 [INFO] Argument:310 - Argument : Priorityvalue: DMA_PRIORITY_HIGH
+2024-02-16 02:26:34,221 [INFO] Argument:300 - Argument : FIFOModevalue: DMA_FIFOMODE_DISABLE
+2024-02-16 02:26:34,221 [INFO] Argument:310 - Argument : FIFOModevalue: DMA_FIFOMODE_DISABLE
+2024-02-16 02:26:34,221 [INFO] Argument:300 - Argument : FIFOThresholdvalue: null
+2024-02-16 02:26:34,221 [INFO] Argument:310 - Argument : FIFOThresholdvalue: null
+2024-02-16 02:26:34,221 [INFO] Argument:300 - Argument : MemBurstvalue: null
+2024-02-16 02:26:34,221 [INFO] Argument:310 - Argument : MemBurstvalue: null
+2024-02-16 02:26:34,221 [INFO] Argument:300 - Argument : PeriphBurstvalue: null
+2024-02-16 02:26:34,221 [INFO] Argument:310 - Argument : PeriphBurstvalue: null
+2024-02-16 02:26:34,222 [INFO] Argument:300 - Argument : Lockvalue: null
+2024-02-16 02:26:34,222 [INFO] Argument:310 - Argument : Lockvalue: null
+2024-02-16 02:26:34,222 [INFO] Argument:300 - Argument : Statevalue: null
+2024-02-16 02:26:34,222 [INFO] Argument:310 - Argument : Statevalue: null
+2024-02-16 02:26:34,222 [INFO] Argument:300 - Argument : Parentvalue: null
+2024-02-16 02:26:34,222 [INFO] Argument:310 - Argument : Parentvalue: null
+2024-02-16 02:26:34,222 [INFO] Argument:300 - Argument : XferCpltCallbackvalue: null
+2024-02-16 02:26:34,222 [INFO] Argument:310 - Argument : XferCpltCallbackvalue: null
+2024-02-16 02:26:34,222 [INFO] Argument:300 - Argument : XferHalfCpltCallbackvalue: null
+2024-02-16 02:26:34,222 [INFO] Argument:310 - Argument : XferHalfCpltCallbackvalue: null
+2024-02-16 02:26:34,222 [INFO] Argument:300 - Argument : XferM1CpltCallbackvalue: null
+2024-02-16 02:26:34,222 [INFO] Argument:310 - Argument : XferM1CpltCallbackvalue: null
+2024-02-16 02:26:34,222 [INFO] Argument:300 - Argument : XferErrorCallbackvalue: null
+2024-02-16 02:26:34,223 [INFO] Argument:310 - Argument : XferErrorCallbackvalue: null
+2024-02-16 02:26:34,223 [INFO] Argument:300 - Argument : ErrorCodevalue: null
+2024-02-16 02:26:34,223 [INFO] Argument:310 - Argument : ErrorCodevalue: null
+2024-02-16 02:26:34,566 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\license.tmp_save
+2024-02-16 02:26:34,783 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\license.tmp
+2024-02-16 02:26:34,898 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\gpio.tmp_save
+2024-02-16 02:26:35,132 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\gpio.tmp
+2024-02-16 02:26:38,961 [WARN] IPConfigManager:2910 - Warning: the RefConfig PWREx_EnableUSBVoltageDetector is not available in your config.xml file
+2024-02-16 02:26:39,001 [INFO] Middleware:1435 - No code input for Bsp Dependency
+2024-02-16 02:26:39,013 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\rtos_inc.tmp_save
+2024-02-16 02:26:39,187 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\rtos_inc.tmp
+2024-02-16 02:26:39,202 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\rtos_vars.tmp_save
+2024-02-16 02:26:39,326 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\rtos_vars.tmp
+2024-02-16 02:26:39,331 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\rtos_pfp.tmp_save
+2024-02-16 02:26:39,461 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\rtos_pfp.tmp
+2024-02-16 02:26:39,466 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\rtos_obj_creat.tmp_save
+2024-02-16 02:26:39,608 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\rtos_obj_creat.tmp
+2024-02-16 02:26:39,614 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\rtos_kernelStart.tmp_save
+2024-02-16 02:26:39,751 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\rtos_kernelStart.tmp
+2024-02-16 02:26:39,757 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\rtos_default_thread.tmp_save
+2024-02-16 02:26:39,909 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\rtos_default_thread.tmp
+2024-02-16 02:26:39,915 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\rtos_threads.tmp_save
+2024-02-16 02:26:40,057 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\rtos_threads.tmp
+2024-02-16 02:26:40,070 [INFO] Middleware:1435 - No code input for Bsp Dependency
+2024-02-16 02:26:40,081 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\fatfs_HalInit.tmp_save
+2024-02-16 02:26:40,256 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\fatfs_HalInit.tmp
+2024-02-16 02:26:40,270 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\fatfs_vars.tmp_save
+2024-02-16 02:26:40,397 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\fatfs_vars.tmp
+2024-02-16 02:26:40,403 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\fatfs_ext_vars.tmp_save
+2024-02-16 02:26:40,546 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\fatfs_ext_vars.tmp
+2024-02-16 02:26:40,555 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\fatfs_inc.tmp_save
+2024-02-16 02:26:40,688 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\fatfs_inc.tmp
+2024-02-16 02:26:40,724 [INFO] Middleware:1435 - No code input for Bsp Dependency
+2024-02-16 02:26:40,738 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\rtos_inc.tmp_save
+2024-02-16 02:26:40,932 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\rtos_inc.tmp
+2024-02-16 02:26:40,943 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\rtos_vars.tmp_save
+2024-02-16 02:26:41,065 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\rtos_vars.tmp
+2024-02-16 02:26:41,076 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\rtos_pfp.tmp_save
+2024-02-16 02:26:41,200 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\rtos_pfp.tmp
+2024-02-16 02:26:41,224 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\rtos_obj_creat.tmp_save
+2024-02-16 02:26:41,384 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\rtos_obj_creat.tmp
+2024-02-16 02:26:41,394 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\rtos_kernelStart.tmp_save
+2024-02-16 02:26:41,512 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\rtos_kernelStart.tmp
+2024-02-16 02:26:41,523 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\rtos_default_thread.tmp_save
+2024-02-16 02:26:41,648 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\rtos_default_thread.tmp
+2024-02-16 02:26:41,658 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\rtos_threads.tmp_save
+2024-02-16 02:26:41,804 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\rtos_threads.tmp
+2024-02-16 02:26:41,834 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\Core\Inc\FreeRTOSConfig.h_save
+2024-02-16 02:26:41,996 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\Core\Inc\FreeRTOSConfig.h
+2024-02-16 02:26:42,021 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\Core\Src\freertos.c_save
+2024-02-16 02:26:42,168 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\Core\Src\freertos.c
+2024-02-16 02:26:42,719 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\dma.tmp_save
+2024-02-16 02:26:42,923 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\dma.tmp
+2024-02-16 02:26:42,930 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\dma_GV.tmp_save
+2024-02-16 02:26:43,073 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\dma_GV.tmp
+2024-02-16 02:26:43,084 [INFO] Middleware:1435 - No code input for Bsp Dependency
+2024-02-16 02:26:43,101 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\fatfs_HalInit.tmp_save
+2024-02-16 02:26:43,358 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\fatfs_HalInit.tmp
+2024-02-16 02:26:43,369 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\fatfs_vars.tmp_save
+2024-02-16 02:26:43,500 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\fatfs_vars.tmp
+2024-02-16 02:26:43,512 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\fatfs_ext_vars.tmp_save
+2024-02-16 02:26:43,642 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\fatfs_ext_vars.tmp
+2024-02-16 02:26:43,653 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\fatfs_inc.tmp_save
+2024-02-16 02:26:43,793 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\fatfs_inc.tmp
+2024-02-16 02:26:43,818 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\FATFS\Target\ffconf.h_save
+2024-02-16 02:26:44,035 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\FATFS\Target\ffconf.h
+2024-02-16 02:26:44,057 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\FATFS\Target\user_diskio.c_save
+2024-02-16 02:26:44,232 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\FATFS\Target\user_diskio.c
+2024-02-16 02:26:44,243 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\FATFS\Target\user_diskio.h_save
+2024-02-16 02:26:44,365 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\FATFS\Target\user_diskio.h
+2024-02-16 02:26:44,376 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\FATFS\App\fatfs.c_save
+2024-02-16 02:26:44,500 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\FATFS\App\fatfs.c
+2024-02-16 02:26:44,509 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\FATFS\App\fatfs.h_save
+2024-02-16 02:26:44,635 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\FATFS\App\fatfs.h
+2024-02-16 02:26:44,687 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\Core\Src\stm32f4xx_it.c_save
+2024-02-16 02:26:44,944 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\Core\Src\stm32f4xx_it.c
+2024-02-16 02:26:44,956 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\Core\Inc\stm32f4xx_it.h_save
+2024-02-16 02:26:45,104 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\Core\Inc\stm32f4xx_it.h
+2024-02-16 02:26:45,144 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\Core\Src\stm32f4xx_hal_msp.c_save
+2024-02-16 02:26:45,382 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\Core\Src\stm32f4xx_hal_msp.c
+2024-02-16 02:26:45,390 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\system.tmp_save
+2024-02-16 02:26:45,509 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\MXTmpFiles\system.tmp
+2024-02-16 02:26:45,532 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\Core\Src\stm32f4xx_hal_timebase_tim.c_save
+2024-02-16 02:26:45,694 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\Core\Src\stm32f4xx_hal_timebase_tim.c
+2024-02-16 02:26:45,738 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\Core\Inc\stm32f4xx_hal_conf.h_save
+2024-02-16 02:26:45,962 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\Core\Inc\stm32f4xx_hal_conf.h
+2024-02-16 02:26:45,994 [WARN] IPConfigManager:3348 - IP not found : TIM
+2024-02-16 02:26:45,994 [WARN] IPConfigManager:3348 - IP not found : USB_OTG
+2024-02-16 02:26:45,996 [WARN] CodeGenerator:3567 - IP not found : null
+2024-02-16 02:26:45,996 [WARN] CodeGenerator:3567 - IP not found : null
+2024-02-16 02:26:46,023 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\Core\Inc\main.h_save
+2024-02-16 02:26:46,185 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\Core\Inc\main.h
+2024-02-16 02:26:46,208 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\Core\Src\main.c_save
+2024-02-16 02:26:46,594 [INFO] CodeEngine:269 - Generated code: C:\Users\User\STM32CubeIDE\workspace_1.10.1\RAD_Embedded_Task\RAD_Embedded_Task\Core\Src\main.c
+2024-02-16 02:26:48,062 [INFO] ProjectBuilder:2919 - Time for Copy HAL[1] : 539mS.
+2024-02-16 02:26:48,075 [INFO] ProjectBuilder:4117 - Project Generator version: 3.17.1
+2024-02-16 02:26:48,672 [INFO] ConfigFileManager:1394 - The Die is : DIE419
+2024-02-16 02:26:51,409 [INFO] ProjectBuilder:4285 - Time for Generating toolchain IDE Files: 3334mS.
+2024-02-16 02:26:51,411 [INFO] ProjectBuilder:2790 - Time for Copy CMSIS : 1mS.
+2024-02-16 02:26:51,427 [INFO] ProjectBuilder:2790 - Time for Copy CMSIS : 1mS.
