@@ -38,7 +38,6 @@
 /* USER CODE BEGIN PTD */
 
 /* USER CODE END PTD */
-
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
 
@@ -88,9 +87,7 @@ float temperature =0; //global variable to save temperature
 
 char fan_speed[20]; //global variable to save fan speed
 
-uint8_t time_available = 0;
-uint8_t fan_available = 0;
-uint8_t time_flag = 0;
+unint8_t date_available = 0;
 
 
 /* USER CODE END PV */
@@ -515,7 +512,7 @@ static void MX_TIM3_Init(void)
   htim3.Instance = TIM3;
   htim3.Init.Prescaler = 84-1;
   htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim3.Init.Period = 1000;
+  htim3.Init.Period = 65535;
   htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim3.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_Base_Init(&htim3) != HAL_OK)
@@ -772,6 +769,7 @@ char time_buffer[18]; // save time as a char array
  void Get_Time (void)
  {
  	uint8_t get_time[7];
+// 	HAL_I2C_Mem_Read(&hi2c2, DS1307_ADDR, 0x00, 1, get_time, 7, 1000);
  	HAL_I2C_Mem_Read_DMA(&hi2c2, DS1307_ADDR, 0x00, 1, get_time, 7);
  	time.seconds = bcdToDec(get_time[0]);
  	time.minutes = bcdToDec(get_time[1]);
@@ -787,19 +785,12 @@ void Start_RTC(void const * argument)
 {
   /* USER CODE BEGIN 5 */
 //Uncomment following line to set the time
-//Set_Time(00, 20, 15, 5, 16, 2, 24); //(sec,min,hour,day of week,day of month,month,year)
+//Set_Time(00, 03, 14, 4, 15, 2, 24);
   /* Infinite loop */
-	Get_Time();
-	sprintf(time_buffer, "Time: %02d:%02d:%02d",time.hour,time.minutes,time.seconds);
-	osDelay(1);
-	time_available = 1;
   for(;;)
   {
-	  time_flag = 0;
 	  Get_Time();
 	  sprintf(time_buffer, "Time: %02d:%02d:%02d",time.hour,time.minutes,time.seconds);
-	  osDelay(1);
-	  time_flag = 1;
 	  osDelay(1000);
   }
   /* USER CODE END 5 */
@@ -920,7 +911,6 @@ void Start_DataLogging(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-	if (time_available>0 && fan_available>0 && time_flag>0){
 	fresult = f_open(&fil,"datalog.txt",FA_OPEN_ALWAYS|FA_WRITE);
 	fresult = f_lseek(&fil, ptr);
 	fresult = f_puts(time_buffer,&fil);
@@ -933,12 +923,12 @@ void Start_DataLogging(void const * argument)
 	ptr+=2;
 	fresult = f_close(&fil);
 	bufclear();
-	}
 
     osDelay(50);
   }
   /* USER CODE END Start_DataLogging */
 }
+
 
 /* USER CODE BEGIN Header_Start_FanControl */
 /**
@@ -957,10 +947,7 @@ void Start_FanControl(void const * argument)
   /* USER CODE BEGIN Start_FanControl */
 	uint8_t dutyCycle = 50; //initialize fan speed
 	TIM1->CCR1 = dutyCycle;
-	sprintf(fan_speed,"Fan Speed : %02d",dutyCycle);
 	HAL_TIM_PWM_Start(&htim1,TIM_CHANNEL_1);
-	osDelay(1);
-	fan_available = 1;
   /* Infinite loop */
   for(;;)
   {

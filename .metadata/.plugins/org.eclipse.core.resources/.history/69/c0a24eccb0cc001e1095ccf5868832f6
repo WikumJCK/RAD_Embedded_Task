@@ -787,18 +787,16 @@ void Start_RTC(void const * argument)
 {
   /* USER CODE BEGIN 5 */
 //Uncomment following line to set the time
-//Set_Time(00, 20, 15, 5, 16, 2, 24); //(sec,min,hour,day of week,day of month,month,year)
+Set_Time(00, 20, 15, 5, 16, 2, 24); //(sec,min,hour,day of week,day of month,month,year)
   /* Infinite loop */
 	Get_Time();
 	sprintf(time_buffer, "Time: %02d:%02d:%02d",time.hour,time.minutes,time.seconds);
-	osDelay(1);
 	time_available = 1;
   for(;;)
   {
 	  time_flag = 0;
 	  Get_Time();
 	  sprintf(time_buffer, "Time: %02d:%02d:%02d",time.hour,time.minutes,time.seconds);
-	  osDelay(1);
 	  time_flag = 1;
 	  osDelay(1000);
   }
@@ -959,7 +957,6 @@ void Start_FanControl(void const * argument)
 	TIM1->CCR1 = dutyCycle;
 	sprintf(fan_speed,"Fan Speed : %02d",dutyCycle);
 	HAL_TIM_PWM_Start(&htim1,TIM_CHANNEL_1);
-	osDelay(1);
 	fan_available = 1;
   /* Infinite loop */
   for(;;)
