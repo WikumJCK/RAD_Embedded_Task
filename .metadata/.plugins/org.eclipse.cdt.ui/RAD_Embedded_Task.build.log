@@ -1,4 +1,4 @@
-09:32:59 **** Incremental Build of configuration Debug for project RAD_Embedded_Task ****
+11:39:39 **** Incremental Build of configuration Debug for project RAD_Embedded_Task ****
 make -j12 all 
 arm-none-eabi-size   RAD_Embedded_Task.elf 
    text	   data	    bss	    dec	    hex	filename
@@ -6,5 +6,5 @@ arm-none-eabi-size   RAD_Embedded_Task.elf
 Finished building: default.size.stdout
  
 
-09:33:00 Build Finished. 0 errors, 0 warnings. (took 737ms)
+11:39:39 Build Finished. 0 errors, 0 warnings. (took 821ms)
 

@@ -90,6 +90,23 @@ char fan_speed[20]; //global variable to save fan speed
 
 
 
+uint8_t uart_bfr, cmd;
+uint16_t buffer_counter=0;
+uint8_t led_status;
+uint8_t cmdstate=0;
+uint32_t blinktimer;
+uint8_t blinkstatus;
+uint8_t uart_buffer[128];
+static uint8_t UART_SendFlag=1;
+uint8_t menu_cmd[]={"\
+  \r\nToggle GREEN LED     ----> 1 \
+  \r\nToggle BLUE LED      ----> 2 \
+  \r\nToggle RED LED       ----> 3 \
+  \r\nType your option here : \n"};
+
+
+
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -802,17 +819,6 @@ void Start_RTC(void const * argument)
 * @param argument: Not used
 * @retval None
 */
-//Select the corresponding COM port and BuadRate as 115200
-uint8_t uart_bfr, cmd;
-uint8_t cmdstate=0;
-uint32_t blinktimer;
-uint8_t uart_buffer[128];
-static uint8_t UART_SendFlag=1;
-uint8_t menu_cmd[]={"\
-  \r\nToggle GREEN LED     ----> 1 \
-  \r\nToggle BLUE LED      ----> 2 \
-  \r\nToggle RED LED       ----> 3 \
-  \r\nType your option here : \n"};
 
 void send_uart_dma(uint8_t* ptr, uint16_t len){
 	while(!UART_SendFlag);

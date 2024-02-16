@@ -29,23 +29,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  12 .ARM.attributes 00000030  00000000  00000000  00020110  2**0
                   CONTENTS, READONLY
- 13 .debug_info   00029b75  00000000  00000000  00020140  2**0
+ 13 .debug_info   00029ac2  00000000  00000000  00020140  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_abbrev 000052eb  00000000  00000000  00049cb5  2**0
+ 14 .debug_abbrev 000052d8  00000000  00000000  00049c02  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_aranges 000021c0  00000000  00000000  0004efa0  2**3
+ 15 .debug_aranges 000021b8  00000000  00000000  0004eee0  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_ranges 00001fc0  00000000  00000000  00051160  2**3
+ 16 .debug_ranges 00001fb8  00000000  00000000  00051098  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_macro  0002a92b  00000000  00000000  00053120  2**0
+ 17 .debug_macro  0002a92b  00000000  00000000  00053050  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_line   0002972f  00000000  00000000  0007da4b  2**0
+ 18 .debug_line   0002970f  00000000  00000000  0007d97b  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .debug_str    000f304f  00000000  00000000  000a717a  2**0
+ 19 .debug_str    000f3018  00000000  00000000  000a708a  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 20 .comment      00000050  00000000  00000000  0019a1c9  2**0
+ 20 .comment      00000050  00000000  00000000  0019a0a2  2**0
                   CONTENTS, READONLY
- 21 .debug_frame  000094c0  00000000  00000000  0019a21c  2**2
+ 21 .debug_frame  0000949c  00000000  00000000  0019a0f4  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -4480,11 +4480,10 @@ static void MX_GPIO_Init(void)
  8001e14:	46bd      	mov	sp, r7
  8001e16:	bd80      	pop	{r7, pc}
  8001e18:	20000660 	.word	0x20000660
- 8001e1c:	20000fc0 	.word	0x20000fc0
+ 8001e1c:	20000fd0 	.word	0x20000fd0
 
 08001e20 <Start_RTC>:
 
-char time_buffer[18];
 /* USER CODE END Header_Start_RTC */
 void Start_RTC(void const * argument)
 {
@@ -4492,8 +4491,8 @@ void Start_RTC(void const * argument)
  8001e22:	b084      	sub	sp, #16
  8001e24:	af02      	add	r7, sp, #8
  8001e26:	6078      	str	r0, [r7, #4]
-  /* USER CODE BEGIN 5 */
-//	Set_Time(00, 03, 14, 4, 15, 2, 24);
+//Uncomment following line to set the time
+//Set_Time(00, 03, 14, 4, 15, 2, 24);
   /* Infinite loop */
   for(;;)
   {
@@ -4513,24 +4512,22 @@ void Start_RTC(void const * argument)
  8001e40:	4905      	ldr	r1, [pc, #20]	; (8001e58 <Start_RTC+0x38>)
  8001e42:	4806      	ldr	r0, [pc, #24]	; (8001e5c <Start_RTC+0x3c>)
  8001e44:	f00d f84a 	bl	800eedc <siprintf>
-//	  sprintf ((char*)uart_buffer,"LED Status %d\r",led_status);
-//	  send_uart_dma(time_buffer, strlen((char*)time_buffer));
 	  osDelay(1000);
  8001e48:	f44f 707a 	mov.w	r0, #1000	; 0x3e8
  8001e4c:	f00a fb28 	bl	800c4a0 <osDelay>
 	  Get_Time();
  8001e50:	e7ea      	b.n	8001e28 <Start_RTC+0x8>
  8001e52:	bf00      	nop
- 8001e54:	20000fc0 	.word	0x20000fc0
+ 8001e54:	20000fd0 	.word	0x20000fd0
  8001e58:	0800f750 	.word	0x0800f750
- 8001e5c:	20000fc8 	.word	0x20000fc8
+ 8001e5c:	20000fbc 	.word	0x20000fbc
 
 08001e60 <send_uart_dma>:
-/**
-* @brief Function implementing the UART_LEDTask thread.
-* @param argument: Not used
-* @retval None
-*/
+  \r\nToggle GREEN LED     ----> 1 \
+  \r\nToggle BLUE LED      ----> 2 \
+  \r\nToggle RED LED       ----> 3 \
+  \r\nType your option here : \n"};
+
 void send_uart_dma(uint8_t* ptr, uint16_t len){
  8001e60:	b580      	push	{r7, lr}
  8001e62:	b082      	sub	sp, #8
@@ -4609,9 +4606,9 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
  8001ed2:	3708      	adds	r7, #8
  8001ed4:	46bd      	mov	sp, r7
  8001ed6:	bd80      	pop	{r7, pc}
- 8001ed8:	20000fbc 	.word	0x20000fbc
- 8001edc:	20000fbd 	.word	0x20000fbd
- 8001ee0:	20000fbe 	.word	0x20000fbe
+ 8001ed8:	20000fd7 	.word	0x20000fd7
+ 8001edc:	20000fd8 	.word	0x20000fd8
+ 8001ee0:	20000fd9 	.word	0x20000fd9
  8001ee4:	2000097c 	.word	0x2000097c
 
 08001ee8 <HAL_UART_TxCpltCallback>:
@@ -4635,6 +4632,7 @@ void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart){
  8001f04:	20000001 	.word	0x20000001
 
 08001f08 <Start_UART_LED>:
+
 /* USER CODE END Header_Start_UART_LED */
 void Start_UART_LED(void const * argument)
 {
@@ -4669,7 +4667,6 @@ void Start_UART_LED(void const * argument)
  8001f34:	4b18      	ldr	r3, [pc, #96]	; (8001f98 <Start_UART_LED+0x90>)
  8001f36:	2200      	movs	r2, #0
  8001f38:	701a      	strb	r2, [r3, #0]
-
 	      	//process command
 	      	switch (cmd){
  8001f3a:	4b18      	ldr	r3, [pc, #96]	; (8001f9c <Start_UART_LED+0x94>)
@@ -4724,18 +4721,18 @@ void Start_UART_LED(void const * argument)
  8001f88:	e7d0      	b.n	8001f2c <Start_UART_LED+0x24>
  8001f8a:	bf00      	nop
  8001f8c:	20000004 	.word	0x20000004
- 8001f90:	20000fbc 	.word	0x20000fbc
+ 8001f90:	20000fd7 	.word	0x20000fd7
  8001f94:	2000097c 	.word	0x2000097c
- 8001f98:	20000fbe 	.word	0x20000fbe
- 8001f9c:	20000fbd 	.word	0x20000fbd
+ 8001f98:	20000fd9 	.word	0x20000fd9
+ 8001f9c:	20000fd8 	.word	0x20000fd8
  8001fa0:	40020400 	.word	0x40020400
 
 08001fa4 <bufsize>:
-void send_uart (char *string){
-	uint8_t len = strlen(string);
-	HAL_UART_Transmit(&huart3,(uint8_t *)string,len,2000);
-}
+FATFS *pfs; //For checking the capacity
+DWORD fre_clust;
+uint32_t total, free_space;
 
+//len of a buffer
 int bufsize(char *buf){
  8001fa4:	b480      	push	{r7}
  8001fa6:	b085      	sub	sp, #20
@@ -4766,7 +4763,7 @@ int bufsize(char *buf){
 	...
 
 08001fd4 <bufclear>:
-
+//clear a buffer
 void bufclear(void){
  8001fd4:	b480      	push	{r7}
  8001fd6:	b083      	sub	sp, #12
@@ -4817,12 +4814,7 @@ void Start_DataLogging(void const * argument)
  8002020:	461a      	mov	r2, r3
  8002022:	4b2e      	ldr	r3, [pc, #184]	; (80020dc <Start_DataLogging+0xd0>)
  8002024:	701a      	strb	r2, [r3, #0]
-//	fresult = f_open(&fil,"file1.txt",FA_OPEN_ALWAYS|FA_READ|FA_WRITE);
-//	strcpy(SD_buffer,"This data is from file\n\n");
-//	fresult = f_write(&fil,SD_buffer,bufsize(SD_buffer),&bw);
-//	fresult = f_close(&fil);
-//	bufclear();
-	unsigned long ptr = 0;
+	unsigned long ptr = 0; // variable to save the cursor location
  8002026:	2300      	movs	r3, #0
  8002028:	60fb      	str	r3, [r7, #12]
   /* Infinite loop */
@@ -4901,7 +4893,6 @@ void Start_DataLogging(void const * argument)
  80020b2:	68fb      	ldr	r3, [r7, #12]
  80020b4:	3302      	adds	r3, #2
  80020b6:	60fb      	str	r3, [r7, #12]
-//	fresult = f_write(&fil,time_buffer,bufsize(time_buffer),&bw);
 	fresult = f_close(&fil);
  80020b8:	480a      	ldr	r0, [pc, #40]	; (80020e4 <Start_DataLogging+0xd8>)
  80020ba:	f009 fd94 	bl	800bbe6 <f_close>
@@ -4911,11 +4902,7 @@ void Start_DataLogging(void const * argument)
  80020c4:	701a      	strb	r2, [r3, #0]
 	bufclear();
  80020c6:	f7ff ff85 	bl	8001fd4 <bufclear>
-//	fresult = f_puts(time_buffer,&fil);
-//	fresult = f_puts(",",&fil);
-//	//fresult = f_puts(fan_speed,&fil);
-//	fresult = f_puts("\n\n",&fil);
-////	fresult = f_close(&fil);
+
     osDelay(50);
  80020ca:	2032      	movs	r0, #50	; 0x32
  80020cc:	f00a f9e8 	bl	800c4a0 <osDelay>
@@ -4927,7 +4914,7 @@ void Start_DataLogging(void const * argument)
  80020dc:	20003044 	.word	0x20003044
  80020e0:	0800f76c 	.word	0x0800f76c
  80020e4:	20002014 	.word	0x20002014
- 80020e8:	20000fc8 	.word	0x20000fc8
+ 80020e8:	20000fbc 	.word	0x20000fbc
  80020ec:	0800f778 	.word	0x0800f778
  80020f0:	20000fa8 	.word	0x20000fa8
  80020f4:	0800f77c 	.word	0x0800f77c
@@ -4944,7 +4931,7 @@ void Start_FanControl(void const * argument)
  80020fc:	af00      	add	r7, sp, #0
  80020fe:	6078      	str	r0, [r7, #4]
   /* USER CODE BEGIN Start_FanControl */
-	uint8_t dutyCycle = 50;
+	uint8_t dutyCycle = 50; //initialize fan speed
  8002100:	2332      	movs	r3, #50	; 0x32
  8002102:	73fb      	strb	r3, [r7, #15]
 	TIM1->CCR1 = dutyCycle;
@@ -5022,9 +5009,9 @@ void Start_FanControl(void const * argument)
  80021a4:	20000fa8 	.word	0x20000fa8
 
 080021a8 <Start_Temp>:
+*/
 
 
-char string[64];
 /* USER CODE END Header_Start_Temp */
 void Start_Temp(void const * argument)
 {
@@ -5034,7 +5021,7 @@ void Start_Temp(void const * argument)
  80021ae:	6078      	str	r0, [r7, #4]
   /* USER CODE BEGIN Start_Temp */
   /* Infinite loop */
-	DS18B20_Init(DS18B20_Resolution_12bits);
+	DS18B20_Init(DS18B20_Resolution_12bits); //Select sensor resolution
  80021b0:	200c      	movs	r0, #12
  80021b2:	f7fe fc13 	bl	80009dc <DS18B20_Init>
 
@@ -5045,7 +5032,7 @@ void Start_Temp(void const * argument)
 	DS18B20_StartAll();
  80021ba:	f7fe f9f3 	bl	80005a4 <DS18B20_StartAll>
 	uint8_t ROM_tmp[8];
-	uint8_t i;
+	uint8_t i; 				//to save number of sensors
 	  for(i = 0; i < DS18B20_Quantity(); i++)
  80021be:	2300      	movs	r3, #0
  80021c0:	75fb      	strb	r3, [r7, #23]

@@ -27,8 +27,6 @@
 
 #include <stdio.h>
 
-
-//Libraries for DS18b20 temperature sensor
 #include "onewire.h"
 #include "ds18b20.h"
 
@@ -82,10 +80,26 @@ osThreadId TempReading_TasHandle;
 osMessageQId myQueue01Handle;
 /* USER CODE BEGIN PV */
 
+float temperature =0;
 
-float temperature =0; //global variable to save temperature
+char fan_speed[20];
 
-char fan_speed[20]; //global variable to save fan speed
+static const uint8_t DS1307_ADDR = 0x68 <<1;
+
+
+uint8_t uart_bfr, cmd;
+uint16_t buffer_counter=0;
+uint8_t led_status;
+uint8_t cmdstate=0;
+uint32_t blinktimer;
+uint8_t blinkstatus;
+uint8_t uart_buffer[128];
+static uint8_t UART_SendFlag=1;
+uint8_t menu_cmd[]={"\
+  \r\nToggle GREEN LED     ----> 1 \
+  \r\nToggle BLUE LED      ----> 2 \
+  \r\nToggle RED LED       ----> 3 \
+  \r\nType your option here : \n"};
 
 
 
@@ -722,10 +736,6 @@ static void MX_GPIO_Init(void)
   * @param  argument: Not used
   * @retval None
   */
-
-static const uint8_t DS1307_ADDR = 0x68 <<1; // Address of the RTC module
-char time_buffer[18]; // save time as a char array
-
 // Convert normal decimal numbers to binary coded decimal
  uint8_t decToBcd(int val)
  {
@@ -780,17 +790,19 @@ char time_buffer[18]; // save time as a char array
  	time.year = bcdToDec(get_time[6]);
  }
 
+char time_buffer[18];
 /* USER CODE END Header_Start_RTC */
 void Start_RTC(void const * argument)
 {
   /* USER CODE BEGIN 5 */
-//Uncomment following line to set the time
-//Set_Time(00, 03, 14, 4, 15, 2, 24);
+//	Set_Time(00, 03, 14, 4, 15, 2, 24);
   /* Infinite loop */
   for(;;)
   {
 	  Get_Time();
 	  sprintf(time_buffer, "Time: %02d:%02d:%02d",time.hour,time.minutes,time.seconds);
+//	  sprintf ((char*)uart_buffer,"LED Status %d\r",led_status);
+//	  send_uart_dma(time_buffer, strlen((char*)time_buffer));
 	  osDelay(1000);
   }
   /* USER CODE END 5 */
@@ -802,18 +814,6 @@ void Start_RTC(void const * argument)
 * @param argument: Not used
 * @retval None
 */
-//Select the corresponding COM port and BuadRate as 115200
-uint8_t uart_bfr, cmd;
-uint8_t cmdstate=0;
-uint32_t blinktimer;
-uint8_t uart_buffer[128];
-static uint8_t UART_SendFlag=1;
-uint8_t menu_cmd[]={"\
-  \r\nToggle GREEN LED     ----> 1 \
-  \r\nToggle BLUE LED      ----> 2 \
-  \r\nToggle RED LED       ----> 3 \
-  \r\nType your option here : \n"};
-
 void send_uart_dma(uint8_t* ptr, uint16_t len){
 	while(!UART_SendFlag);
 
@@ -838,7 +838,6 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
 void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart){
 	UART_SendFlag=1;
 }
-
 /* USER CODE END Header_Start_UART_LED */
 void Start_UART_LED(void const * argument)
 {
@@ -851,6 +850,7 @@ void Start_UART_LED(void const * argument)
   {
 	  if(cmdstate){
 	      	cmdstate=0;
+
 	      	//process command
 	      	switch (cmd){
 	      	case '1':
@@ -890,13 +890,17 @@ FATFS *pfs; //For checking the capacity
 DWORD fre_clust;
 uint32_t total, free_space;
 
-//len of a buffer
+void send_uart (char *string){
+	uint8_t len = strlen(string);
+	HAL_UART_Transmit(&huart3,(uint8_t *)string,len,2000);
+}
+
 int bufsize(char *buf){
 	int i=0;
 	while(*buf++ !='\0') i++;
 	return i;
 }
-//clear a buffer
+
 void bufclear(void){
 	for(int i=0;i<1024;i++){
 		SD_buffer[i]= '\0';
@@ -907,7 +911,14 @@ void Start_DataLogging(void const * argument)
 {
   /* USER CODE BEGIN Start_DataLogging */
 	fresult = f_mount(&fs,"",0);
-	unsigned long ptr = 0; // variable to save the cursor location
+//	if(fresult != FR_OK) send_uart("error in mounting SD CARD...\n");
+//	else send_uart("SD Card mounted successfully...\n");
+//	fresult = f_open(&fil,"file1.txt",FA_OPEN_ALWAYS|FA_READ|FA_WRITE);
+//	strcpy(SD_buffer,"This data is from file\n\n");
+//	fresult = f_write(&fil,SD_buffer,bufsize(SD_buffer),&bw);
+//	fresult = f_close(&fil);
+//	bufclear();
+	unsigned long ptr = 0;
   /* Infinite loop */
   for(;;)
   {
@@ -921,14 +932,21 @@ void Start_DataLogging(void const * argument)
 	ptr+=bufsize(fan_speed);
 	fresult = f_puts("\n",&fil);
 	ptr+=2;
+//	fresult = f_write(&fil,time_buffer,bufsize(time_buffer),&bw);
 	fresult = f_close(&fil);
 	bufclear();
 
+
+//	fresult = f_lseek(&fil,fil.fptr);
+//	fresult = f_puts(time_buffer,&fil);
+//	fresult = f_puts(",",&fil);
+//	//fresult = f_puts(fan_speed,&fil);
+//	fresult = f_puts("\n\n",&fil);
+////	fresult = f_close(&fil);
     osDelay(50);
   }
   /* USER CODE END Start_DataLogging */
 }
-
 
 /* USER CODE BEGIN Header_Start_FanControl */
 /**
@@ -936,8 +954,6 @@ void Start_DataLogging(void const * argument)
 * @param argument: Not used
 * @retval None
 */
-
-//Set the minimum and maximum range of the temperature
 #define MAXTEMP 35
 #define MINTEMP 29
 
@@ -945,7 +961,7 @@ void Start_DataLogging(void const * argument)
 void Start_FanControl(void const * argument)
 {
   /* USER CODE BEGIN Start_FanControl */
-	uint8_t dutyCycle = 50; //initialize fan speed
+	uint8_t dutyCycle = 50;
 	TIM1->CCR1 = dutyCycle;
 	HAL_TIM_PWM_Start(&htim1,TIM_CHANNEL_1);
   /* Infinite loop */
@@ -975,19 +991,20 @@ void Start_FanControl(void const * argument)
 */
 
 
+char string[64];
 /* USER CODE END Header_Start_Temp */
 void Start_Temp(void const * argument)
 {
   /* USER CODE BEGIN Start_Temp */
   /* Infinite loop */
-	DS18B20_Init(DS18B20_Resolution_12bits); //Select sensor resolution
+	DS18B20_Init(DS18B20_Resolution_12bits);
 
   for(;;)
   {
 	DS18B20_ReadAll();
 	DS18B20_StartAll();
 	uint8_t ROM_tmp[8];
-	uint8_t i; 				//to save number of sensors
+	uint8_t i;
 	  for(i = 0; i < DS18B20_Quantity(); i++)
 		{
 			if(DS18B20_GetTemperature(i, &temperature))
