@@ -21,3 +21,5 @@
 1708055567835	Delete resource 'RAD_Embedded_Task/Core/Inc/tm_stm32_rcc.h'
 1708055571194	Delete resource 'RAD_Embedded_Task/Core/Inc/tm_stm32_gpio.h'
 1708055601466	Delete 10 resources
+1708081112623	Delete resource 'RAD_Embedded_Task/Middlewares/Releases'
+1708081139066	Delete resource 'RAD_Embedded_Task/Releases'

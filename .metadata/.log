@@ -494,3 +494,12 @@ Command-line arguments:  -os win32 -ws win32 -arch x86_64
 
 !ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2024-02-16 01:39:53.953
 !MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.cdt.core 1 0 2024-02-16 16:29:13.011
+!MESSAGE Indexed 'RAD_Embedded_Task' (50 sources, 160 headers) in 9.94 sec: 17,924 declarations; 106,189 references; 2 unresolved inclusions; 152 syntax errors; 148 unresolved names (0.12%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2024-02-16 16:29:37.978
+!MESSAGE Indexed 'RAD_Embedded_Task' (50 sources, 160 headers) in 6.21 sec: 17,924 declarations; 106,189 references; 2 unresolved inclusions; 152 syntax errors; 148 unresolved names (0.12%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2024-02-16 16:29:55.157
+!MESSAGE Indexed 'RAD_Embedded_Task' (50 sources, 160 headers) in 5.66 sec: 17,924 declarations; 106,189 references; 2 unresolved inclusions; 152 syntax errors; 148 unresolved names (0.12%)
